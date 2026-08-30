@@ -174,6 +174,39 @@
   }
   .fact p { margin: 10px 0 0; font-size: 0.96rem; line-height: 1.55; color: var(--ink-2); max-width: none; }
 
+  .spiral {
+    margin-top: 40px;
+    padding: 30px 32px 32px;
+    background: var(--accent-wash);
+    border-left: 6px solid var(--accent);
+  }
+  .spiral .sk {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .spiral .lead {
+    font-family: var(--f-display);
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--ink);
+    max-width: 26ch;
+    margin-bottom: 18px;
+  }
+  .spiral p { font-size: 0.98rem; line-height: 1.6; color: var(--ink-2); max-width: 60ch; }
+  .spiral .out {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--accent);
+    color: var(--ink);
+  }
+
   /* ---------- the five parts ---------- */
 
   .part {
@@ -551,9 +584,10 @@
     .shell { max-width: none; padding: 0; }
     .open { padding: 0 0 22px; }
     .sec { padding: 26px 0; }
-    .fact, .check, .wrong, .tone, .part, .mail, .sheet, .why, .greg { break-inside: avoid; page-break-inside: avoid; }
+    .fact, .check, .wrong, .tone, .part, .mail, .sheet, .why, .spiral { break-inside: avoid; page-break-inside: avoid; }
     .sec h2, .open h1 { break-after: avoid; page-break-after: avoid; }
     .final { break-before: page; page-break-before: always; }
+    .playlink { display: none; }
     .foot { padding: 24px 0 0; }
   }
 </style>
@@ -605,8 +639,8 @@
           <div class="fact-k">Why they go quiet</div>
           <h3>Going quiet is shame, not rudeness</h3>
           <p>
-            Students who are behind avoid the people chasing them. The less they've done, the
-            harder your email is to open. So write the one that's easy to answer badly.
+            Anything you ask for is something they can avoid, and the further behind they are,
+            the more attractive avoiding it gets. Silence is rarely a decision. It is a flinch.
           </p>
         </div>
         <div class="fact">
@@ -617,6 +651,28 @@
             reads as disappointed. You have to put the warmth in on purpose.
           </p>
         </div>
+      </div>
+
+      <div class="spiral">
+        <span class="sk">The avoidance spiral</span>
+        <p class="lead">The student who most needs you is the least able to answer you.</p>
+        <p>
+          A week behind is awkward to admit. A month behind is humiliating. Every week of
+          silence puts up the price of replying, because there is more to explain and more to
+          be embarrassed about. So the people in the most trouble get harder to reach the
+          longer it runs, and they are the ones you can least afford to lose.
+        </p>
+        <p>
+          This is why chasing harder makes it worse. Every unanswered email adds to what they
+          will have to account for when they finally do answer, so each one you send makes the
+          next reply less likely, not more. You are not applying pressure. You are raising a
+          price they already cannot pay.
+        </p>
+        <p class="out">
+          The way out is to bring the price down. Make the reply small, make a bad answer an
+          acceptable one, and take the explaining off them entirely. You are not lowering your
+          standards. You are removing the reason to stay silent.
+        </p>
       </div>
     </div>
   </section>
@@ -1089,6 +1145,7 @@
         <li><span>Is the next step small enough that someone who's done nothing can still reply today?</span></li>
       </ol>
     </div>
+
 
     <a class="playlink" href="index.html">
       <span class="pk">Now try it</span>
