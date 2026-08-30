@@ -1,10 +1,10 @@
 # Advisor Email Training
 
-Two pages for the Keypath advisor team, on writing emails that online students actually answer.
+Two pages for the Keypath advisor team, on writing emails people actually answer.
 
 | Page | File | What it is |
 | --- | --- | --- |
-| Build the Email | `index.html` | A five round quiz. Pick lines, build an email, see what the student does. |
+| Who Wrote It Better | `index.html` | A five round quiz. Judge three versions of every line, build an email, see what happens. |
 | Write So They Write Back | `guide.html` | The written guide the game is built on. |
 
 They link to each other, so the hub only needs one link. Point it at the root.
@@ -18,11 +18,13 @@ the close. Three options a round, one weak, one okay, one strong, shuffled.
 
 It plays as a quiz. During the rounds there is no feedback, no grading and no running score.
 Your pick drops into the draft and you move on. Everything is revealed at the end: your score,
-every line graded with the reasoning, the strongest option for anything you missed, and the
-student's reply.
+every line graded with the reasoning, the strongest option for anything you missed, and what
+happened next.
 
-Two points strong, one okay, none weak. Ten per scenario. Four scenarios covering warm,
-firm but kind, repair, and last chance.
+Two points strong, one okay, none weak. Ten per scenario. Six scenarios: four on student contact
+covering warm, firm but kind, repair and last chance, plus two deliberately silly ones (an all
+staff email about the office fridge, and getting money back off a friend) that drill the same
+five part structure without anyone having to think about their own job.
 
 Click a tile or press A, B or C. The keyboard shortcuts make it quick to run live with a
 room voting out loud.
@@ -97,7 +99,7 @@ other. The working copy lives at `C:\Users\greg.banks\github\advisor-email-train
 
 ## Known limitations
 
-- Scenarios and student replies are written examples, not real cases. Swap them for real
+- Scenarios and outcomes are written examples, not real cases. Swap the student ones for real
   anonymised ones when they are available.
 - The tone advice in the guide, particularly the firm section, has not been signed off by
   anyone at Keypath.

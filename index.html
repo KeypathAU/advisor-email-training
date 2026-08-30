@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="A training game for advisors. Build an email to a student one line at a time, then see everything revealed at the end.">
-<title>Build the Email</title>
+<meta name="description" content="A training game. Judge three versions of every line, build an email, then see everything revealed at the end.">
+<title>Who Wrote It Better</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
@@ -228,25 +228,40 @@
   }
 
   .how {
-    margin-top: 48px;
-    padding: 28px 30px 30px;
+    margin-top: 40px;
+    padding: 26px 30px 30px;
     background: var(--panel-bg);
     color: var(--panel-fg);
-    max-width: 640px;
   }
   .how h4 {
     font-family: var(--f-display);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: -0.025em;
-    margin-bottom: 14px;
     color: var(--panel-accent);
   }
-  .how ol { margin: 0; padding-left: 20px; }
-  .guidelink { margin: 18px 0 0; font-size: 0.93rem; }
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 22px 24px;
+    margin-top: 20px;
+  }
+  @media (min-width: 940px) {
+    .how-steps { grid-template-columns: repeat(5, 1fr); }
+  }
+  .how-step { padding-top: 12px; border-top: 2px solid var(--panel-accent); }
+  .how-step .n {
+    display: block;
+    font-family: var(--f-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--panel-accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .how-step p { margin: 9px 0 0; font-size: 0.9rem; line-height: 1.45; opacity: 0.9; }
+  .guidelink { margin: 22px 0 0; font-size: 0.92rem; opacity: 0.9; }
   .guidelink a { color: var(--panel-accent); text-underline-offset: 4px; }
-  .how li { font-size: 0.95rem; margin-bottom: 8px; opacity: 0.88; }
-  .how li:last-child { margin-bottom: 0; }
 
   /* ---------- play chrome ---------- */
 
@@ -880,6 +895,156 @@ const SCENARIOS = [
         reply: "No reply. Six weeks later he calls the enquiries line asking how to re-enrol, and finds out he owes for a subject he never completed."
       }
     }
+  },
+
+  {
+    id: "fridge",
+    name: "The office fridge",
+    tone: "All staff",
+    blurb: "Something on the middle shelf has developed opinions.",
+    student: "Everyone",
+    brief: "There is a container on the middle shelf of the office fridge that has been there since at least June. Facilities will not touch it. You have been asked to send the all staff email, and everyone will read it, including whoever owns the container.",
+    steps: [
+      {
+        part: "Subject line",
+        job: "Make the promise",
+        prompt: "This lands in sixty inboxes at once. Pick the subject line.",
+        tiles: [
+          { tier: 0, text: "Fridge", why: "One word that could mean anything from a cleaning roster to a fire. People open it out of confusion rather than intent, and that is not the same as reading it." },
+          { tier: 1, text: "Reminder: office fridge policy", why: "Clear about the topic. But the word policy tells sixty people at once that this can wait, and for most of them it will wait forever." },
+          { tier: 2, text: "The fridge gets emptied Friday, take your stuff home", why: "The event, the deadline and the action, all before anyone opens anything. Someone who reads only the subject line still does the right thing, and for an all staff email that is most of your audience." }
+        ]
+      },
+      {
+        part: "First line",
+        job: "Get to the point",
+        prompt: "Pick the opening.",
+        tiles: [
+          { tier: 0, text: "I hope everyone is having a great week! Just a quick note about a few things regarding our shared kitchen facilities.", why: "A cheerful opener, then a warning that several things are coming. A few things is the phrase that makes people scroll down, decide it looks long, and close it." },
+          { tier: 1, text: "This is a reminder that the office fridge is a shared space and should be kept clean.", why: "True and completely useless. It is a statement of principle where a date should be, and nobody can act on a value." },
+          { tier: 2, text: "The fridge is getting cleared out on Friday at 4pm. Anything still in there goes in the bin.", why: "The whole email in one sentence. Everything after this is optional reading, which is exactly what you want when sixty people are skimming." }
+        ]
+      },
+      {
+        part: "The middle",
+        job: "Only what they need",
+        prompt: "Everyone reads this, including the guilty party. Pick what you say.",
+        tiles: [
+          { tier: 0, text: "It has come to our attention that certain individuals have been leaving items in the fridge for extended periods, which shows a lack of consideration for colleagues.", why: "Certain individuals makes sixty people feel accused so that one person feels caught. The innocent get defensive, the guilty get defensive faster, and now the email is about your tone instead of the fridge." },
+          { tier: 1, text: "Please note that items left past this date will be disposed of in accordance with our kitchen guidelines.", why: "Correct, and written as though the fridge has a legal department. The formality adds distance and length and nothing else." },
+          { tier: 2, text: "No detective work and no judgement. I am not going to ask whose the green one is. It all just goes.", why: "Funny, but it is doing real work. The reason nobody claims the container is embarrassment, so removing the shame removes the obstacle. Say nobody is being investigated and people act instead of hiding." }
+        ]
+      },
+      {
+        part: "The ask",
+        job: "One thing, clearly",
+        prompt: "Pick the ask.",
+        tiles: [
+          { tier: 0, text: "Please take responsibility for your items, and also remember to wash your mugs and label your food going forward.", why: "Three asks about three different things, and two of them are about the future rather than Friday. The one that matters is now buried under a lecture about mugs." },
+          { tier: 1, text: "Please remove any items you wish to keep.", why: "One ask, which is right, but the deadline is back up at the top of the email and people skim the middle. An ask with no date attached is a suggestion." },
+          { tier: 2, text: "If you want it, take it home before 4pm Friday. That is the only thing you need to do.", why: "One ask, the deadline repeated where the action is, and a promise that nothing else is being asked of them. That last clause is why people finish reading instead of bracing for more." }
+        ]
+      },
+      {
+        part: "The close",
+        job: "Leave the door open",
+        prompt: "Pick the close.",
+        tiles: [
+          { tier: 0, text: "Let us all try to be more considerate of our shared spaces going forward.", why: "You had them, and then you told sixty adults to behave. This is the sentence people quote to each other afterwards, and not fondly." },
+          { tier: 1, text: "Thanks for your cooperation.", why: "Harmless and slightly stiff. It costs you nothing and earns you nothing." },
+          { tier: 2, text: "Nobody is in trouble. I would just like to be able to open the door without bracing.", why: "Says outright that this is not a telling off, then makes the joke at your own expense rather than theirs. People comply with someone being human at them and resist someone being correct at them." }
+        ]
+      }
+    ],
+    outcomes: {
+      strong: {
+        verdict: "The fridge empties itself before you get there.",
+        reply: "Three people reply to say thank you for doing this. Nobody gets defensive. By Friday lunchtime the shelves are nearly clear and the green container has quietly vanished. Nobody ever admits it was theirs, and you decide not to pursue it."
+      },
+      mixed: {
+        verdict: "About half of it moves.",
+        reply: "A few people clear their shelves. Two reply asking whether this includes the freezer. On Friday you throw out nine items yourself, and the green one is still there, tucked behind a yoghurt like it is hiding."
+      },
+      weak: {
+        verdict: "Nothing moves and someone is upset.",
+        reply: "One person replies to all to say they always clean up after themselves and they find the tone unnecessary. Four people privately agree with them. The fridge is untouched. Facilities still will not go near it."
+      }
+    }
+  },
+
+  {
+    id: "mate",
+    name: "The money your mate owes you",
+    tone: "Awkward",
+    blurb: "Four months. One concert ticket. An increasingly strange silence.",
+    student: "Jules Hartley",
+    brief: "You bought Jules a concert ticket in April. They said they would transfer the money that week. It is now August, it was 180 dollars, and they have not mentioned it once. You have seen them three times since. They are a good friend, you would like to stay friends, and you would also like your 180 dollars.",
+    steps: [
+      {
+        part: "Subject line",
+        job: "Make the promise",
+        prompt: "Pick the subject line.",
+        tiles: [
+          { tier: 0, text: "Hey", why: "A subject line with no information is not neutral, it is ominous. Jules opens this braced for something serious, which is a worse start than simply naming the money." },
+          { tier: 1, text: "Concert ticket money", why: "Clear, and there is nothing wrong with clear. It just reads like an invoice, so they open it already feeling told off." },
+          { tier: 2, text: "The April ticket, and no drama", why: "Names the thing and defuses it in the same breath. They know what this is and that it is survivable before they open it, so they open it." }
+        ]
+      },
+      {
+        part: "First line",
+        job: "Get to the point",
+        prompt: "Pick the opening.",
+        tiles: [
+          { tier: 0, text: "Hey! Hope you are well! Been ages! How are things? Anyway, just wondering about something.", why: "Four units of throat clearing and then a swerve. The cheeriness makes the turn feel like an ambush, and just wondering about something is more unsettling than the actual topic." },
+          { tier: 1, text: "I wanted to check in about the concert ticket from April.", why: "Clear and calm. A little formal for a friend, and check in is a softener doing no work, but the message lands." },
+          { tier: 2, text: "This is the awkward money one, so I am going to be quick about it. The April ticket was 180.", why: "Naming the awkwardness is what removes it. You have said the difficult part out loud so neither of you has to dance around it, and the number is there in sentence one." }
+        ]
+      },
+      {
+        part: "The middle",
+        job: "Only what they need",
+        prompt: "Pick what you say about the four months.",
+        tiles: [
+          { tier: 0, text: "I have mentioned it a few times and I do not want to keep bringing it up, but it has been four months and it is starting to feel a bit off.", why: "This is as per my previous email, in a friendship. Feeling a bit off is an accusation wearing the costume of a feeling, and it invites a defence rather than a payment." },
+          { tier: 1, text: "I know things have been busy. No rush, whenever suits.", why: "So soft it cancels the request. Four months in, no rush means never, and you cannot raise it again without contradicting yourself." },
+          { tier: 2, text: "I am fairly sure you just forgot, and I left it far too long to say anything, which is on me.", why: "Hands them a face saving exit and takes some of the blame yourself. They can now pay without admitting anything, and people pay much faster when paying is not also a confession." }
+        ]
+      },
+      {
+        part: "The ask",
+        job: "One thing, clearly",
+        prompt: "Pick the ask.",
+        tiles: [
+          { tier: 0, text: "Anyway, let me know your thoughts on that.", why: "There is no ask here at all. You have described a situation and asked for an opinion about it, so the likeliest reply is a sympathetic noise and no money." },
+          { tier: 1, text: "Could you send it across when you get a chance?", why: "A real ask undone by its own ending. When you get a chance is how the first four months happened, and it will comfortably produce four more." },
+          { tier: 2, text: "Can you send it this week? Same details as always. If this week is bad, say so and we will sort something out.", why: "Dated, specific, and it offers an alternative to silence. The out matters as much as the deadline, because someone who genuinely cannot pay now has something to say other than nothing." }
+        ]
+      },
+      {
+        part: "The close",
+        job: "Leave the door open",
+        prompt: "Pick the close.",
+        tiles: [
+          { tier: 0, text: "Hopefully we can put this behind us.", why: "It was not a Thing until that sentence made it one. You have upgraded a forgotten transfer into a rift that now needs healing." },
+          { tier: 1, text: "Thanks!", why: "Perfectly fine and completely inert. After a difficult email the close is where you prove the friendship is intact, and this does not do that." },
+          { tier: 2, text: "That is the whole email and I am genuinely not weird about it. Still on for Saturday.", why: "Closes the topic, proves the friendship is not in question, and hands them something normal to reply to. Now the easiest response is to pay you and talk about Saturday." }
+        ]
+      }
+    ],
+    outcomes: {
+      strong: {
+        verdict: "The money lands in nine minutes.",
+        reply: "Oh my God I am so sorry. I genuinely thought I had done this in April and clearly did not. Sending now. Please just tell me next time, I have had a vague sense something was off for weeks and could not work out what it was. And yes, Saturday."
+      },
+      mixed: {
+        verdict: "They pay eventually, and it is faintly strange for a fortnight.",
+        reply: "Ah sorry, yes. I will get that across to you. Been a mad few months."
+      },
+      weak: {
+        verdict: "No money, and now it is definitely a Thing.",
+        reply: "Wow, OK. You could have just asked me. I would have sorted it straight away if you had said something instead of letting it build up for four months and then sending me this."
+      }
+    }
   }
 ];
 
@@ -934,21 +1099,36 @@ function renderMenu() {
   app.innerHTML = `
     <div class="top">
       <span class="flag">Advisor email training</span>
-      <h1>Build the <span class="zap">Email</span></h1>
+      <h1>Who Wrote It <span class="zap">Better</span></h1>
       <p class="tag">A situation lands in your inbox. Build the reply one line at a time. No hints, no scores, no idea how you are doing until you hit send.</p>
     </div>
-    <div class="menu-grid">${cards}</div>
     <div class="how">
       <h4>How it works</h4>
-      <ol>
-        <li>Pick a situation and read what has landed on your desk.</li>
-        <li>Five rounds, one for each part of an email: subject line, first line, the middle, the ask, the close.</li>
-        <li>Three options a round. Pick one and it goes straight into your draft. You get no feedback and no running score.</li>
-        <li>Hit send and everything is revealed at once: your score, every line graded, and why.</li>
-        <li>Then you find out what your student actually did.</li>
-      </ol>
+      <div class="how-steps">
+        <div class="how-step">
+          <span class="n">1</span>
+          <p>Pick a situation and read what has landed on your desk.</p>
+        </div>
+        <div class="how-step">
+          <span class="n">2</span>
+          <p>Five rounds: subject line, first line, the middle, the ask, the close.</p>
+        </div>
+        <div class="how-step">
+          <span class="n">3</span>
+          <p>Three options a round. Pick one and it goes straight into your draft.</p>
+        </div>
+        <div class="how-step">
+          <span class="n">4</span>
+          <p>No feedback and no score while you play. You are on your own.</p>
+        </div>
+        <div class="how-step">
+          <span class="n">5</span>
+          <p>Hit send. Everything is revealed, including what they did next.</p>
+        </div>
+      </div>
       <p class="guidelink"><a href="guide.html">Read the full guide behind this game</a></p>
-    </div>`;
+    </div>
+    <div class="menu-grid">${cards}</div>`;
 
   app.querySelectorAll("[data-go]").forEach(b => {
     b.addEventListener("click", () => startScenario(Number(b.dataset.go)));
@@ -1124,7 +1304,7 @@ function renderResult() {
       <h2 class="rise"${d(0.2)}>${esc(out.verdict)}</h2>
 
       <div class="reply rise"${d(0.3)}>
-        <div class="rt">${esc(sc.student)} replied</div>
+        <div class="rt">What happened next</div>
         <div class="rb">${esc(out.reply)}</div>
       </div>
 
