@@ -513,6 +513,15 @@
     padding: 20px 22px 22px;
     margin-bottom: 16px;
   }
+  .prin {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: 1px dashed var(--rule);
+    padding: 3px 9px;
+  }
   .row .rhead {
     display: flex;
     flex-wrap: wrap;
@@ -629,9 +638,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "Sarah will see this in a list of forty other emails on her phone. Pick the subject line.",
         tiles: [
-          { tier: 0, text: "Following up", why: "It could sit on top of any email you have ever sent. It tells her nothing about what this is, and 'following up' reads as a chase, which is exactly what someone avoiding you will not open." },
-          { tier: 1, text: "Week 4 assessment: action required", why: "Specific, which is a real improvement. But 'action required' is the language of a debt collector, and it puts her on the back foot before she has opened anything." },
-          { tier: 2, text: "Getting your Week 4 assessment sorted", why: "Names the exact thing and frames it as help rather than a chase. She knows what it is, that it involves her, and that you are on her side, all before opening it." }
+          { tier: 0, principle: "Negativity bias", text: "Reminder regarding outstanding assessment submission", why: "Two words, both of them about her failure. Short is not the problem here, cold is. With no warmth attached and nothing about what happens next, the only information she gets is that she is in trouble, and the person most likely to avoid opening it is the person who most needs to." },
+          { tier: 1, principle: "Processing fluency", text: "Week 4 assessment: action required", why: "Specific, which is a real improvement, and she can see what it concerns. But action required is the language of a debt collector rather than a person, and it puts her on the back foot before she has opened anything." },
+          { tier: 2, principle: "Negativity bias", text: "Getting your Week 4 assessment sorted", why: "Names the exact thing and frames it as help rather than a chase. Sorted is doing the emotional work: it tells her this is fixable and that someone is on her side, and she gets both of those before she opens anything." }
         ]
       },
       {
@@ -639,9 +648,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "If she reads one line and closes the email, this is the line. Pick it.",
         tiles: [
-          { tier: 0, text: "I hope this email finds you well. I am writing to follow up on my previous correspondence regarding your progress in the course.", why: "Two sentences that say nothing. By the time she reaches actual information she has already decided this is a form letter and can wait." },
-          { tier: 1, text: "I am writing about your Week 4 assessment, which was due on 8 August.", why: "Gets there, and she knows the topic. But it is a statement of fact with no direction, so she still does not know whether this is help or trouble." },
-          { tier: 2, text: "Your Week 4 assessment hasn't come through yet, and I'd like to help you get it in.", why: "The problem and your intent, in one sentence. If she reads nothing else she knows what this is about and that you are helping, not chasing." }
+          { tier: 0, principle: "Processing fluency", text: "I hope this email finds you well and that your studies are progressing satisfactorily. I am writing to follow up on my previous correspondence of 8 August regarding your ongoing progress in the course and to request an update at your convenience.", why: "Two sentences that carry no information. By the time she reaches anything actionable she has already filed this as a form letter, and form letters can wait. Long is not the fault in itself. Long while saying nothing is." },
+          { tier: 1, principle: "Processing fluency", text: "I am writing about your Week 4 assessment, which was due on 8 August.", why: "Gets there, and she knows the topic straight away. But it is a bare statement of fact with no direction attached, so she still does not know whether the rest of this email is help or trouble, and she will assume trouble." },
+          { tier: 2, principle: "Negativity bias", text: "Your Week 4 assessment hasn't come through. I wanted to write myself rather than let the system chase you, because I'd like to help you get it in.", why: "The problem, the fact that a person chose to write this, and your intent, all in the opening. That middle clause costs you a line and buys you a lot, because it separates you from the automated reminders she has been ignoring." }
         ]
       },
       {
@@ -649,9 +658,9 @@ const SCENARIOS = [
         job: "Only what she needs",
         prompt: "You have about two sentences before she stops reading. Pick what goes in them.",
         tiles: [
-          { tier: 0, text: "As per our records, you have not submitted the Week 4 assessment due 8 August, nor completed the Week 3 discussion post. Failure to submit assessments can impact your progression and may affect your eligibility to continue.", why: "Two problems instead of one, and a threat. Leading with consequences triggers avoidance in exactly the student who most needs to reply. Save it for when a warmer approach has already failed." },
-          { tier: 1, text: "The assessment was due on 8 August and is now a week overdue. Late submissions can still be marked.", why: "Accurate and it does contain the useful bit, that late work still counts. But it is all admin and does nothing about the reason she has gone quiet." },
-          { tier: 2, text: "Week 4 is where a lot of people hit a wall, so you're in good company, and it's fixable.", why: "One sentence saying this is normal and temporary. This is the highest leverage line in the whole email, because what is stopping her is not the deadline, it is the feeling that she is the only one falling behind." }
+          { tier: 0, principle: "Self-efficacy", text: "This is now eight days overdue and non-submission affects your progression.", why: "Brief, accurate, and it lands like a slap. Leading with the consequence triggers avoidance in exactly the student who most needs to reply, and there is nothing here to soften it. Being short did not make this efficient, it made it colder." },
+          { tier: 1, principle: "Processing fluency", text: "The assessment was due on 8 August and is now a week overdue. Late submissions can still be marked.", why: "Accurate, and the second sentence does real work by telling her the door is not shut. But it is all administration, and it does nothing about the reason she has actually gone quiet." },
+          { tier: 2, principle: "Self-efficacy", text: "Week 4 is where a lot of people hit a wall, especially on shift work. You're in better company than it feels like, and it's fixable.", why: "The single highest leverage passage in the email, and it is the longest of the three on purpose. What is stopping her is not the deadline, it is the belief that she is uniquely behind. Telling her that this is normal and survivable is the thing that makes replying possible." }
         ]
       },
       {
@@ -659,9 +668,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "This is what you actually want her to do. Pick it.",
         tiles: [
-          { tier: 0, text: "Please advise as to your intentions at your earliest convenience. Additionally, please ensure your contact details are up to date in the student portal.", why: "Two asks, neither with a date, and 'advise your intentions' asks her to make a decision she is not ready to make. You will get the easy one, or nothing." },
-          { tier: 1, text: "Can you let me know when you'll be able to submit?", why: "One ask, which is right. But it demands a commitment. A student who has not started cannot answer this honestly without admitting how far behind she is, so she will put it off." },
-          { tier: 2, text: "Can you reply with one line telling me where you're up to? Even 'haven't started' is useful.", why: "It gives her an acceptable way to answer badly, and that is the whole trick. It removes the reason to stay silent, and once she has replied once the next reply is far easier." }
+          { tier: 0, principle: "Decision friction", text: "Please advise as to your intentions in respect of the outstanding assessment at your earliest convenience. Additionally, please ensure that your contact details are up to date in the student portal, and note that you may also wish to review the late submission guidance available in the handbook.", why: "Two asks, neither with a date, and advise your intentions demands a decision she is not ready to make. You will get the easy one, or nothing at all, and then you will send a second email chasing the rest." },
+          { tier: 1, principle: "Self-efficacy", text: "Can you let me know when you'll be able to submit?", why: "One ask, which is right, and it is perfectly polite. But it demands a commitment. A student who has not started cannot answer honestly without confessing how far behind she is, so the safest thing she can do is nothing." },
+          { tier: 2, principle: "Self-efficacy", text: "Could you reply with one line telling me where you're up to? Anything is useful, including \"haven't started\". No answer here gets you into trouble.", why: "It hands her a way to answer badly and then says out loud that answering badly is safe. That last clause is not padding. It is the sentence that removes the fear, and the fear is the only thing actually stopping her from replying." }
         ]
       },
       {
@@ -669,16 +678,16 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Last thing she reads, and what she carries into whether she answers. Pick it.",
         tiles: [
-          { tier: 0, text: "Failure to respond may result in further action being taken.", why: "You spent the whole email building safety and then removed it in one line. She will remember this sentence and nothing else." },
-          { tier: 1, text: "Let me know if you need anything.", why: "Harmless, and better than a threat, but it is doing no work. 'Anything' is too vague to act on and it puts the effort back on her." },
-          { tier: 2, text: "No need to write anything long. I'll take it from there and we'll work out something that fits around your shifts.", why: "Shrinks the reply, promises to carry the load, and shows you know she works nights. That last detail is what turns a template into a person." }
+          { tier: 0, principle: "Self-determination", text: "Failure to respond may result in further action being taken.", why: "You spent an entire email building safety and removed it in eleven words. This is the sentence she will remember, and it converts a person who wanted to help her into a process that is coming for her." },
+          { tier: 1, principle: "Negativity bias", text: "Let me know if you need anything.", why: "Harmless and better than a threat, but it is doing no work at all. Anything is too vague to act on, and it quietly hands the effort back to her at the exact point you should be taking it off her." },
+          { tier: 2, principle: "Self-determination", text: "No need to write anything long, and no need to explain yourself. I'll take it from there and we'll work around your shifts.", why: "Shrinks the reply, removes the obligation to justify herself, promises to carry the load, and shows you know she works nights. Four separate reassurances, and it is the longest close of the three because warmth takes words." }
         ]
       }
     ],
     outcomes: {
       strong: {
         verdict: "She replies in forty minutes.",
-        reply: "Hi, thanks for this. Honestly I haven't started it. I picked up extra shifts in August and I've been drowning. I thought I'd already blown it and there was no point. Tell me what I need to do and I'll do it."
+        reply: "Hi, thanks for this. Honestly I haven't started it. I picked up extra shifts in August and I've been drowning. I thought I'd already blown it and there was no point in saying anything. Tell me what I need to do and I'll do it."
       },
       mixed: {
         verdict: "She replies four days later.",
@@ -704,9 +713,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "He is expecting bad news. Pick the subject line.",
         tiles: [
-          { tier: 0, text: "RE: Extension request", why: "A reply header, not a subject line. It tells him nothing about the answer, so he opens it braced for a no and reads defensively from the first word." },
-          { tier: 1, text: "Your extension request", why: "Clear enough, and at least it is about him. But it still frames the whole email around the thing you are refusing." },
-          { tier: 2, text: "Your extension request, and what we can do instead", why: "Signals a no and a way forward in the same line. He opens it looking for the option rather than bracing for the refusal, which changes how he reads everything after it." }
+          { tier: 0, principle: "Negativity bias", text: "RE: Extension request", why: "A reply header rather than a subject line. It tells him nothing about the answer, so he opens it braced for a refusal and reads every sentence after that defensively." },
+          { tier: 1, principle: "Processing fluency", text: "Your extension request", why: "Clear enough, and at least it is about him rather than about policy. It still frames the entire email around the thing you are refusing, which is the least useful half of what you have to say." },
+          { tier: 2, principle: "Negativity bias", text: "Your extension request, and what we can do instead", why: "Signals the no and the way forward in the same line, so he opens it looking for the option rather than bracing for the refusal. Longer than the other two, and the extra words are the ones doing the work." }
         ]
       },
       {
@@ -714,9 +723,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "Pick the opening.",
         tiles: [
-          { tier: 0, text: "Thank you for your email. Unfortunately, I regret to inform you that we are unable to approve your request.", why: "Three units of padding wrapped around a no. The softening does not soften anything, it just delays the news and makes the refusal feel more official." },
-          { tier: 1, text: "I can't approve a backdated extension, but there's another option.", why: "Direct, honest, and it points forward. Solid. It just stops short of telling him the thing he actually wants to know, which is whether he is still going to pass." },
-          { tier: 2, text: "I can't backdate an extension, but you can still submit and still pass. Here's how.", why: "Answers the refusal and the real question in one line. The question underneath every extension request is 'am I stuffed', and this answers it immediately." }
+          { tier: 0, principle: "Negativity bias", text: "Unfortunately your request has been declined.", why: "Six words, no person in them, and the passive voice makes it sound like a machine decided. Short and clear is not the same as short and kind, and this is a good example of the difference." },
+          { tier: 1, principle: "Processing fluency", text: "Thank you for your email. Unfortunately, I regret to inform you that we are unable to approve your request.", why: "Three units of padding wrapped around a no. The softening does not actually soften anything, it just delays the news and makes the refusal sound more official than it needs to." },
+          { tier: 2, principle: "Self-efficacy", text: "I can't backdate an extension, and I'm sorry, because I can see why you're asking. You can still submit and still pass. Here's how.", why: "Answers the refusal, acknowledges that the request was reasonable, and answers the question underneath every extension request, which is am I finished. Warmth and speed in the same breath, which is what the curt version cannot do." }
         ]
       },
       {
@@ -724,9 +733,9 @@ const SCENARIOS = [
         job: "Only what he needs",
         prompt: "Pick how you explain it.",
         tiles: [
-          { tier: 0, text: "As per the Assessment Policy section 4.2, extension requests must be submitted prior to the assessment due date. As your request was received after the due date, it does not meet the criteria for approval.", why: "Hiding behind a policy number. It is accurate and it reads as though a system said no rather than a person, which gives him nothing to work with and nobody to talk to." },
-          { tier: 1, text: "Extensions have to be requested before the due date, so I can't approve this one.", why: "Plain and human, which is a big improvement on the policy citation. But it is still only the no. It leaves the useful half unsaid." },
-          { tier: 2, text: "Extensions have to be in before the due date, so this one sits outside what I can approve. What I can do is flag your submission for late marking, which costs 5 per cent a day instead of a zero.", why: "The no, the reason, and the alternative with a real number attached. He now knows exactly what it costs him, which lets him make a decision instead of worrying." }
+          { tier: 0, principle: "Self-determination", text: "As per the Assessment Policy section 4.2, extension requests must be submitted prior to the assessment due date and must be accompanied by supporting documentation where applicable. As your request was received after the due date had passed, it does not meet the criteria for approval and no discretion is available to me in these circumstances.", why: "Hiding behind a policy number. It reads as though a system said no rather than a person, which leaves him nobody to talk to and nothing to work with. The length is not the problem, the absence of a human being is." },
+          { tier: 1, principle: "Processing fluency", text: "Extensions have to be requested before the due date, so I can't approve this one.", why: "Plain and human, and a big improvement on the policy citation. But it is still only the no, and it leaves the genuinely useful half of the message unsaid." },
+          { tier: 2, principle: "Decision friction", text: "Extensions have to be in before the due date, so this one sits outside what I can approve. What I can do is flag it for late marking, which costs 5 per cent a day rather than a zero.", why: "The no, the reason, an acknowledgement that the reason will not make him feel better, and a concrete alternative with a real number on it. He can now make a decision instead of sitting with the worry." }
         ]
       },
       {
@@ -734,9 +743,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "Pick the ask.",
         tiles: [
-          { tier: 0, text: "Please advise how you wish to proceed.", why: "Hands him a decision with no information attached. He has to work out the maths himself, and while he works it out the penalty keeps climbing." },
-          { tier: 1, text: "Let me know if you'd like to go ahead with that.", why: "One clear ask. But there is no date on it, and with a 5 per cent daily penalty running, a vague timeline is actively costing him marks." },
-          { tier: 2, text: "If you can get it in by Friday you'll lose 10 per cent and still pass comfortably. Want me to set that up?", why: "Does the arithmetic for him, names the date, and reduces the decision to yes or no. He can answer this in four seconds from his phone." }
+          { tier: 0, principle: "Decision friction", text: "Please advise how you wish to proceed.", why: "Hands him a decision with no information attached. He now has to do the arithmetic himself, and while he works out whether it is worth it the penalty keeps climbing." },
+          { tier: 1, principle: "Decision friction", text: "Let me know if you'd like to go ahead with that.", why: "One clear ask, and reasonable. But there is no date on it, and with 5 per cent a day running, a vague timeline is actively costing him marks while he thinks about it." },
+          { tier: 2, principle: "Decision friction", text: "Get it in by Friday and you'll lose 10 per cent and still pass comfortably. Want me to set that up?", why: "Does the maths for him, names the date, reassures him about where he stands, and reduces the decision to yes or no. He can answer this in four seconds from a phone." }
         ]
       },
       {
@@ -744,16 +753,16 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Pick the close.",
         tiles: [
-          { tier: 0, text: "Please note that any further late submissions will not be considered.", why: "A warning shot after a no. He came to you with a problem and leaves feeling like a risk being managed. This is the line that stops him asking for help next time." },
-          { tier: 1, text: "Let me know if you have any questions.", why: "Neutral and safe. It just does not acknowledge that he is probably stressed, so the email ends colder than you meant it." },
-          { tier: 2, text: "I know this isn't the answer you were after. It's still a good outcome from here, and I'd rather get you across the line than have you walk away.", why: "Names the disappointment instead of stepping around it, then says whose side you are on. You refused him and he still finishes the email trusting you." }
+          { tier: 0, principle: "Self-determination", text: "Please note that any further late submissions will not be considered, and that repeated failure to meet assessment deadlines may be referred for review under the academic progress procedure. You may wish to familiarise yourself with the relevant sections of the handbook before your next submission.", why: "A warning shot after a refusal. He came to you with a problem and leaves feeling like a risk being managed, and this is the line that stops him asking for help the next time he needs it." },
+          { tier: 1, principle: "Negativity bias", text: "Let me know if you have any questions.", why: "Neutral and safe, and it does not acknowledge that he is almost certainly stressed. The email ends colder than you meant it to, because you left the warmth out and text does not supply its own." },
+          { tier: 2, principle: "Self-determination", text: "I know this isn't the answer you wanted, and asking was still the right thing to do. I'd much rather get you across the line than watch you walk away over three days.", why: "Names the disappointment instead of stepping around it, tells him he was not wrong to ask, and says whose side you are on. You refused him and he still finishes the email trusting you, which is the entire job." }
         ]
       }
     ],
     outcomes: {
       strong: {
         verdict: "He replies in ten minutes and submits on Thursday.",
-        reply: "Yes please, set it up. Thanks for being straight with me, I thought I'd lost the whole subject. I'll have it in by Thursday."
+        reply: "Yes please, set it up. Thanks for being straight with me and for not making me feel like an idiot for asking. I thought I'd lost the whole subject. I'll have it in by Thursday."
       },
       mixed: {
         verdict: "He replies the next day, one more question first.",
@@ -779,9 +788,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "She is expecting another brush-off. Pick the subject line.",
         tiles: [
-          { tier: 0, text: "RE: RE: RE: Enquiry", why: "The subject line itself is evidence of the problem. Three replies deep and still labelled 'enquiry', which tells her she is a ticket and nobody has actually read it." },
-          { tier: 1, text: "Your withdrawal and the charge", why: "Clear and specific, and she can see you know which issue this is. It just gives her no signal about whether anything is being fixed." },
-          { tier: 2, text: "Sorting your refund, and an apology", why: "Leads with the fix and owns the failure before she opens anything. Half her anger is about being ignored, and this answers that in the subject line." }
+          { tier: 0, principle: "Processing fluency", text: "RE: RE: RE: Enquiry", why: "The subject line is itself evidence of the problem. Three replies deep and still labelled enquiry, which tells her she is a ticket in a queue and that nobody has actually read what she wrote." },
+          { tier: 1, principle: "Processing fluency", text: "Your withdrawal and the charge", why: "Clear and specific, and she can see you know which issue this is. It gives her no signal at all about whether anything is being fixed, so she opens it expecting to have to fight." },
+          { tier: 2, principle: "Negativity bias", text: "Sorting your refund, and an apology", why: "Leads with the fix and owns the failure before she opens anything. Half her anger is about being ignored, and the word apology in the subject line answers that immediately." }
         ]
       },
       {
@@ -789,9 +798,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "Pick the opening.",
         tiles: [
-          { tier: 0, text: "Thank you for your email. We apologise for any inconvenience caused and appreciate your patience.", why: "The corporate non-apology. 'Any inconvenience' refuses to name what happened, and thanking her for patience she did not have will read as sarcasm." },
-          { tier: 1, text: "I'm sorry for the delay in getting back to you. I've looked into the charge.", why: "A real apology and evidence you did something, which is genuinely better. But it apologises only for the delay and stays quiet on the charge being your error." },
-          { tier: 2, text: "You're right, and I'm sorry. Two weeks with no reply isn't good enough, and the charge shouldn't have gone through.", why: "Concedes both points in the first line, unprompted and without hedging. Nothing de-escalates an angry person faster than being agreed with before they have to argue." }
+          { tier: 0, principle: "Negativity bias", text: "Thank you for your email and for bringing this matter to our attention. We sincerely apologise for any inconvenience that may have been caused and we appreciate your patience while your enquiry was being processed through our standard channels.", why: "The corporate non-apology. Any inconvenience refuses to name what actually happened, and thanking her for patience she did not have and was not offered will read as sarcasm to someone already angry." },
+          { tier: 1, principle: "Negativity bias", text: "I'm sorry for the delay in getting back to you. I've looked into the charge.", why: "A real apology and evidence that you did something, which is genuinely better. But it apologises only for the delay and stays carefully quiet about the charge being your error, and she will notice the gap." },
+          { tier: 2, principle: "Negativity bias", text: "You're right, and I'm sorry. Two weeks with no reply isn't good enough and the charge shouldn't have happened. Neither was your fault.", why: "Concedes every point in the opening, unprompted and without hedging, and explicitly takes the chasing off her. Nothing de-escalates an angry person faster than being agreed with before they have had to make their case." }
         ]
       },
       {
@@ -799,9 +808,9 @@ const SCENARIOS = [
         job: "Only what she needs",
         prompt: "Pick what you tell her.",
         tiles: [
-          { tier: 0, text: "Please note that withdrawal requests must be submitted via the student portal and are subject to processing times of up to 10 business days.", why: "Explaining the process to the person your process failed. It reads as laying groundwork to blame her, and it will double the length of the complaint." },
-          { tier: 1, text: "I've checked and your withdrawal was submitted on time. The charge was an error at our end.", why: "Clear, and it takes the blame properly. Good. It is just missing the specifics that turn a claim into proof." },
-          { tier: 2, text: "I've checked. Your withdrawal went in on 3 August, well inside the census date, so the charge is our error and not yours.", why: "The date and the reason. Naming the specific evidence shows you actually opened the file rather than writing a soothing sentence, and that is what makes the apology credible." }
+          { tier: 0, principle: "Self-determination", text: "Withdrawals must be submitted through the portal.", why: "Seven words explaining the process to the person your process failed. It is short, it is technically true, and it reads as laying the groundwork to blame her. This is the exact register that turns a complaint into an escalation." },
+          { tier: 1, principle: "Processing fluency", text: "I've checked and your withdrawal was submitted on time. The charge was an error at our end.", why: "Clear, and it takes the blame properly rather than hiding behind the passive voice. It is only missing the specifics that turn a claim into proof." },
+          { tier: 2, principle: "Processing fluency", text: "Your withdrawal went in on 3 August, well inside census. The charge is our error, not yours. You did everything right and we billed you anyway.", why: "The date, the reason, and an explicit statement that she did nothing wrong. Naming the specific evidence proves you opened the file rather than writing a soothing sentence, and that is what makes the apology credible." }
         ]
       },
       {
@@ -809,9 +818,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "Pick the ask.",
         tiles: [
-          { tier: 0, text: "Please complete the attached form and return it so we can process your refund request.", why: "You made the mistake and the homework goes to her. Handing paperwork to someone you have already let down twice is how a complaint becomes an escalation." },
-          { tier: 1, text: "Can you confirm the account details you'd like the refund to go to?", why: "One clear ask and reasonable. It still leaves her carrying a step, and she has no idea whether anything has actually started moving." },
-          { tier: 2, text: "I've started the reversal and you don't need to do anything. Can you just confirm the card ending 4471 is still the right one?", why: "Action already taken, effort reduced to a yes, and the card digits prove you have the record open in front of you. The ask is now smaller than her anger." }
+          { tier: 0, principle: "Decision friction", text: "Please complete the attached refund request form in full and return it to this address so that we can begin processing your request. Please note that refund requests are subject to verification and that processing times of up to ten business days may apply once the completed form is received.", why: "You made the mistake and the homework goes to her. Handing paperwork to someone you have already let down twice is the fastest route from a complaint to an escalation." },
+          { tier: 1, principle: "Decision friction", text: "Can you confirm the account details you'd like the refund to go to?", why: "One clear ask, and reasonable. It still leaves her carrying a step, and she has no idea whether anything has actually started moving yet, which is precisely what she is angry about." },
+          { tier: 2, principle: "Decision friction", text: "I've started the reversal already, so there's nothing for you to do or fill in. I just need a yes: is the card ending 4471 still right?", why: "Action already taken, paperwork explicitly ruled out, and the effort reduced to a single word. The card digits also prove you have her record open in front of you, which does more for her trust than another apology would." }
         ]
       },
       {
@@ -819,16 +828,16 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Pick the close.",
         tiles: [
-          { tier: 0, text: "We value your feedback and thank you for your patience.", why: "Back to the corporate voice at the exact moment she needs a person. It undoes whatever the rest of the email earned." },
-          { tier: 1, text: "Sorry again, and let me know if anything else comes up.", why: "Human and fine. It just ends passively, leaving her to chase you again if nothing happens, which is the thing she is angry about." },
-          { tier: 2, text: "I'll email you the moment it clears. If you'd rather talk it through, my number's below and you can call me any time this week.", why: "You chase yourself instead of making her do it, and you offer a channel where she can actually be heard. Offering the phone to an angry person almost always means they do not need to use it." }
+          { tier: 0, principle: "Negativity bias", text: "We value your feedback as it helps us to improve our services, and we thank you once again for your patience throughout this process. Should you have any further concerns please do not hesitate to contact us through the usual channels.", why: "Back to the corporate voice at the exact moment she needs a person. It undoes whatever the rest of the email earned, because it proves there was a script running underneath it all along." },
+          { tier: 1, principle: "Self-determination", text: "Sorry again, and let me know if anything else comes up.", why: "Human and perfectly fine. It just ends passively, leaving her to chase you if nothing happens, and being left to chase is the thing she wrote in about." },
+          { tier: 2, principle: "Self-determination", text: "I'll email you the moment it clears so you never have to chase me again. My direct number is below if you'd rather talk.", why: "You take on the chasing yourself and offer a channel where she can actually be heard. Offering the phone to an angry person almost always means they never need to use it, because what they wanted was to be taken seriously." }
         ]
       }
     ],
     outcomes: {
       strong: {
         verdict: "She replies within the hour, and the complaint stops here.",
-        reply: "Thank you. That's the first response I've had that actually addressed it. Card ending 4471 is correct. I appreciate you being straight about it, I'd more or less given up."
+        reply: "Thank you. That's the first response I've had that actually addressed it. Card ending 4471 is correct. I appreciate you being straight about it, I'd more or less given up and was about to go to the university."
       },
       mixed: {
         verdict: "She replies, still wary.",
@@ -840,7 +849,6 @@ const SCENARIOS = [
       }
     }
   },
-
   {
     id: "silent",
     name: "The student who's gone quiet",
@@ -854,9 +862,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "Two of your emails are already sitting unopened. Pick the subject line.",
         tiles: [
-          { tier: 0, text: "Third and final notice", why: "The language of a utility company about to cut him off. Someone already avoiding you will read that in the preview pane and never open it, which guarantees the outcome you are trying to prevent." },
-          { tier: 1, text: "Your enrolment: important", why: "Honest and it signals weight. But 'important' is what every automated email says, and it still reads institutional rather than personal." },
-          { tier: 2, text: "Are you still with us, Marcus?", why: "A real question from a real person, using his name. It does not accuse him of anything, and it is almost impossible not to open. Curiosity beats warning when two warnings have already failed." }
+          { tier: 0, principle: "Self-determination", text: "Third and final notice", why: "The language of a utility company about to cut someone off. Four words, and every one of them tells him he is in trouble. Someone already avoiding you reads that in the preview pane and never opens it, which guarantees the outcome you are trying to prevent." },
+          { tier: 1, principle: "Processing fluency", text: "Your enrolment: important", why: "Honest, and it signals weight without threatening him. But important is what every automated email in his inbox claims to be, and it still reads institutional rather than like a person who noticed he was missing." },
+          { tier: 2, principle: "Negativity bias", text: "Are you still with us, Marcus?", why: "A real question from a real person, using his name. It does not accuse him of anything, and after two ignored warnings a question he can answer beats a third warning he cannot face." }
         ]
       },
       {
@@ -864,9 +872,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "Pick the opening.",
         tiles: [
-          { tier: 0, text: "This is my third attempt to contact you regarding your lack of engagement with the course.", why: "Your frustration, front and centre. 'Third attempt' and 'lack of engagement' both tell him he is in trouble, and he will feel the irritation and stop reading before the useful part." },
-          { tier: 1, text: "I haven't heard from you in a few weeks and wanted to check in before anything changes on your enrolment.", why: "Warm and it flags the stakes without threatening. Good. 'Check in' is slightly soft for a situation with ten days on the clock." },
-          { tier: 2, text: "I haven't heard from you in a while, and I'd rather ask than assume.", why: "Explicitly refuses to assume the worst about him, which is the opposite of what he expects after three weeks of silence. It gives him a way back that does not require an apology first." }
+          { tier: 0, principle: "Negativity bias", text: "This is my third attempt to contact you regarding your continued lack of engagement with the course. As you will be aware from my previous emails, students are expected to maintain regular participation, and I have so far received no response to any of my communications.", why: "Your frustration, front and centre. Third attempt and lack of engagement both tell him he has done something wrong, and he will feel the irritation and stop reading well before the part that could actually help him." },
+          { tier: 1, principle: "Negativity bias", text: "I haven't heard from you in a few weeks and wanted to check in before anything changes on your enrolment.", why: "Warm, and it flags the stakes without threatening. Genuinely good. Check in is slightly soft for a situation with ten days left on the clock, but nothing here does any harm." },
+          { tier: 2, principle: "Negativity bias", text: "I haven't heard from you in a while, and I'd rather ask than assume. Usually something has got in the way. It's rarely that someone stopped caring.", why: "Explicitly refuses to assume the worst, then says out loud what he is most afraid you think. After three weeks of silence he is expecting judgement, and being handed the opposite is what makes a reply possible." }
         ]
       },
       {
@@ -874,9 +882,9 @@ const SCENARIOS = [
         job: "Only what he needs",
         prompt: "Pick how you handle the deadline.",
         tiles: [
-          { tier: 0, text: "As previously advised, continued non-engagement will result in your enrolment being withdrawn in accordance with policy.", why: "'As previously advised' is pure frustration leaking through formality. He hears the irritation and takes in none of the content, including the deadline that actually matters." },
-          { tier: 1, text: "If we don't hear anything by 12 September your enrolment will be withdrawn.", why: "Clear, dated, and no threat in the wording. Solid. It just states the machine's behaviour without telling him he has any power over it." },
-          { tier: 2, text: "Here's the honest position: if I don't hear from you by 12 September, your enrolment gets withdrawn automatically. I can pause that if you tell me you want to keep going.", why: "Same deadline, but it separates the automatic system from you, and puts the handbrake in his hands. He is not being punished, he is being offered control, and that is what gets a reply." }
+          { tier: 0, principle: "Negativity bias", text: "As previously advised, continued non-engagement will result in withdrawal.", why: "As previously advised is frustration leaking out through formality, and he will hear the irritation and take in none of the content, including the deadline that actually matters to him. Nine words, and it costs you the whole email." },
+          { tier: 1, principle: "Processing fluency", text: "If we don't hear anything by 12 September your enrolment will be withdrawn.", why: "Clear, dated, and there is no threat in the wording, which is a genuine improvement. It just states what the machine will do without telling him he has any power over it." },
+          { tier: 2, principle: "Self-determination", text: "Honestly: if I don't hear from you by 12 September the system withdraws you automatically. I can put a hold on that the moment you say you want to stay.", why: "Same deadline, but it separates the automatic process from you and puts the handbrake in his hands. He is not being punished by a person, he is being offered control by one, and control is what gets a reply out of someone who has been avoiding you." }
         ]
       },
       {
@@ -884,9 +892,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "Pick the ask.",
         tiles: [
-          { tier: 0, text: "You are required to respond to this email as a matter of urgency.", why: "Pure pressure with no instruction. He does not know what a response should contain, and being ordered to reply is the fastest way to make an avoidant person avoid you harder." },
-          { tier: 1, text: "Please let me know whether you intend to continue.", why: "One clear ask. But 'intend to continue' asks him to commit to the whole degree, and if he does not know the answer, the safest move is to say nothing." },
-          { tier: 2, text: "Reply with one word. 'Continuing' or 'stopping'. Either is fine and neither needs explaining.", why: "The smallest possible ask, with permission to give the answer you do not want and no obligation to justify it. It removes every reason to stay silent, which is the only real obstacle here." }
+          { tier: 0, principle: "Self-determination", text: "You are required to respond to this email as a matter of urgency.", why: "Pure pressure with no instruction attached. He does not know what a response is supposed to contain, and being ordered to reply is the fastest way to make someone already avoiding you avoid you harder." },
+          { tier: 1, principle: "Self-efficacy", text: "Please let me know whether you intend to continue.", why: "One clear ask and perfectly polite. But intend to continue asks him to commit to the entire degree, and if he genuinely does not know the answer yet, the safest available move is to say nothing at all." },
+          { tier: 2, principle: "Self-efficacy", text: "Reply with one word if that's easier: continuing, or stopping. Both are fine, neither needs explaining, and if you're somewhere in between just say so.", why: "The smallest possible ask, explicit permission to give the answer you do not want, no obligation to justify it, and a third door for the honest answer of I do not know. Longer than the other two, and every extra clause removes another reason to stay silent." }
         ]
       },
       {
@@ -894,16 +902,16 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Pick the close.",
         tiles: [
-          { tier: 0, text: "Failure to respond will be taken as confirmation that you no longer wish to continue.", why: "It punishes silence, and silence is his symptom, not his decision. This line makes not replying feel like a valid choice, which is precisely the outcome you are trying to avoid." },
-          { tier: 1, text: "I hope to hear from you soon.", why: "Warm and inoffensive. It just does nothing, and with ten days left you cannot afford a line that does nothing." },
-          { tier: 2, text: "If life has got in the way, that's OK, and it happens more than you'd think. There are options either way, but I can't use any of them unless I hear from you.", why: "Removes the shame, then makes his reply the thing that unlocks help rather than the thing that gets him told off. It gives silence a cost without ever making it a threat." }
+          { tier: 0, principle: "Self-determination", text: "Failure to respond by the date specified will be taken as confirmation that you no longer wish to continue with your studies, and your enrolment will be withdrawn accordingly without further notice. Any outstanding fees incurred to that date will remain payable.", why: "It punishes silence, and silence is his symptom rather than his decision. Worse, it quietly makes not replying a valid way to choose, which is precisely the outcome you were trying to prevent." },
+          { tier: 1, principle: "Negativity bias", text: "I hope to hear from you soon.", why: "Warm and inoffensive, and doing nothing whatsoever. With ten days left you cannot afford a closing line that neither reassures him nor moves him." },
+          { tier: 2, principle: "Self-efficacy", text: "If life has got in the way that's genuinely OK, and it happens to plenty of people who go on to finish. There are options either way. I just can't use any of them until I hear from you.", why: "Removes the shame, tells him people in his position do recover, and then makes his reply the thing that unlocks help rather than the thing that gets him told off. It gives silence a cost without ever making it a threat." }
         ]
       }
     ],
     outcomes: {
       strong: {
         verdict: "He replies that night.",
-        reply: "Continuing. Sorry for going quiet. My dad went into hospital in August and I just stopped opening anything. I didn't know how to explain it so I didn't. If there are options I'd like to hear them."
+        reply: "Continuing. Sorry for going quiet. My dad went into hospital in August and I just stopped opening anything. I didn't know how to explain it so I didn't explain it. If there are options I'd like to hear them."
       },
       mixed: {
         verdict: "He replies on day nine, with one day to spare.",
@@ -929,9 +937,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "This lands in sixty inboxes at once. Pick the subject line.",
         tiles: [
-          { tier: 0, text: "Fridge", why: "One word that could mean anything from a cleaning roster to a fire. People open it out of confusion rather than intent, and that is not the same as reading it." },
-          { tier: 1, text: "Reminder: office fridge policy", why: "Clear about the topic. But the word policy tells sixty people at once that this can wait, and for most of them it will wait forever." },
-          { tier: 2, text: "The fridge gets emptied Friday, take your stuff home", why: "The event, the deadline and the action, all before anyone opens anything. Someone who reads only the subject line still does the right thing, and for an all staff email that is most of your audience." }
+          { tier: 0, principle: "Processing fluency", text: "Fridge", why: "One word that could mean anything from a cleaning roster to a fire. People open it out of confusion rather than intent, and that is not the same thing as reading it." },
+          { tier: 1, principle: "Processing fluency", text: "Reminder: office fridge policy", why: "Clear about the topic. But the word policy tells sixty people at once that this can safely wait, and for most of them waiting will turn out to mean forever." },
+          { tier: 2, principle: "Processing fluency", text: "The fridge gets emptied Friday, take your stuff home", why: "The event, the deadline and the action, all before anyone opens anything. Someone who reads only the subject line still does the right thing, and for an all staff email that is most of your audience." }
         ]
       },
       {
@@ -939,9 +947,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "Pick the opening.",
         tiles: [
-          { tier: 0, text: "I hope everyone is having a great week! Just a quick note about a few things regarding our shared kitchen facilities.", why: "A cheerful opener, then a warning that several things are coming. A few things is the phrase that makes people scroll down, decide it looks long, and close it." },
-          { tier: 1, text: "This is a reminder that the office fridge is a shared space and should be kept clean.", why: "True and completely useless. It is a statement of principle where a date should be, and nobody can act on a value." },
-          { tier: 2, text: "The fridge is getting cleared out on Friday at 4pm. Anything still in there goes in the bin.", why: "The whole email in one sentence. Everything after this is optional reading, which is exactly what you want when sixty people are skimming." }
+          { tier: 0, principle: "Processing fluency", text: "I hope everyone is having a great week! Just a quick note about a few things regarding our shared kitchen facilities.", why: "A cheerful opener followed by a warning that several things are coming. A few things is the phrase that makes people scroll down, decide it looks long, and close it." },
+          { tier: 1, principle: "Processing fluency", text: "This is a reminder that the office fridge is a shared space and should be kept clean.", why: "True and completely useless. It is a statement of principle standing where a date should be, and nobody has ever acted on a value." },
+          { tier: 2, principle: "Processing fluency", text: "The fridge is getting cleared out on Friday at 4pm. Anything still in there goes in the bin.", why: "The whole email in one sentence. Everything after this becomes optional reading, which is exactly what you want when sixty people are skimming on the way to a meeting." }
         ]
       },
       {
@@ -949,9 +957,9 @@ const SCENARIOS = [
         job: "Only what they need",
         prompt: "Everyone reads this, including the guilty party. Pick what you say.",
         tiles: [
-          { tier: 0, text: "It has come to our attention that certain individuals have been leaving items in the fridge for extended periods, which shows a lack of consideration for colleagues.", why: "Certain individuals makes sixty people feel accused so that one person feels caught. The innocent get defensive, the guilty get defensive faster, and now the email is about your tone instead of the fridge." },
-          { tier: 1, text: "Please note that items left past this date will be disposed of in accordance with our kitchen guidelines.", why: "Correct, and written as though the fridge has a legal department. The formality adds distance and length and nothing else." },
-          { tier: 2, text: "No detective work and no judgement. I am not going to ask whose the green one is. It all just goes.", why: "Funny, but it is doing real work. The reason nobody claims the container is embarrassment, so removing the shame removes the obstacle. Say nobody is being investigated and people act instead of hiding." }
+          { tier: 0, principle: "Negativity bias", text: "It has come to our attention that certain individuals have been leaving items in the fridge for extended periods, which shows a lack of consideration for colleagues.", why: "Certain individuals makes sixty people feel accused so that one person feels caught. The innocent get defensive, the guilty get defensive faster, and now the email is about your tone rather than the fridge." },
+          { tier: 1, principle: "Processing fluency", text: "Please note that items left past this date will be disposed of in accordance with our kitchen guidelines.", why: "Correct, and written as though the fridge has a legal department. The formality is adding distance and length and nothing else." },
+          { tier: 2, principle: "Self-efficacy", text: "No detective work and no judgement. I am not going to ask whose the green one is. It all just goes.", why: "Funny, but doing real work. The reason nobody claims the container is embarrassment, so removing the shame removes the obstacle. Say plainly that nobody is being investigated and people act instead of hiding." }
         ]
       },
       {
@@ -959,9 +967,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "Pick the ask.",
         tiles: [
-          { tier: 0, text: "Please take responsibility for your items, and also remember to wash your mugs and label your food going forward.", why: "Three asks about three different things, and two of them are about the future rather than Friday. The one that matters is now buried under a lecture about mugs." },
-          { tier: 1, text: "Please remove any items you wish to keep.", why: "One ask, which is right, but the deadline is back up at the top of the email and people skim the middle. An ask with no date attached is a suggestion." },
-          { tier: 2, text: "If you want it, take it home before 4pm Friday. That is the only thing you need to do.", why: "One ask, the deadline repeated where the action is, and a promise that nothing else is being asked of them. That last clause is why people finish reading instead of bracing for more." }
+          { tier: 0, principle: "Decision friction", text: "Please take responsibility for your items, and also remember to wash your mugs and label your food going forward.", why: "Three asks about three different things, and two of them concern the future rather than Friday. The one that matters is now buried underneath a lecture about mugs." },
+          { tier: 1, principle: "Decision friction", text: "Please remove any items you wish to keep.", why: "One ask, which is right, but the deadline is back at the top of the email and people skim the middle. An ask with no date attached to it is a suggestion." },
+          { tier: 2, principle: "Decision friction", text: "If you want it, take it home before 4pm Friday. That is the only thing you need to do.", why: "One ask, the deadline repeated where the action is, and a promise that nothing else is being asked of them. That last clause is why people finish reading instead of bracing for more." }
         ]
       },
       {
@@ -969,9 +977,9 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Pick the close.",
         tiles: [
-          { tier: 0, text: "Let us all try to be more considerate of our shared spaces going forward.", why: "You had them, and then you told sixty adults to behave. This is the sentence people quote to each other afterwards, and not fondly." },
-          { tier: 1, text: "Thanks for your cooperation.", why: "Harmless and slightly stiff. It costs you nothing and earns you nothing." },
-          { tier: 2, text: "Nobody is in trouble. I would just like to be able to open the door without bracing.", why: "Says outright that this is not a telling off, then makes the joke at your own expense rather than theirs. People comply with someone being human at them and resist someone being correct at them." }
+          { tier: 0, principle: "Self-determination", text: "Let us all try to be more considerate of our shared spaces going forward.", why: "You had them, and then you told sixty adults to behave. This is the sentence people quote to each other afterwards, and not fondly." },
+          { tier: 1, principle: "Negativity bias", text: "Thanks for your cooperation.", why: "Harmless and slightly stiff. It costs you nothing and it earns you nothing, which after a whole email about bins is a missed opportunity." },
+          { tier: 2, principle: "Negativity bias", text: "Nobody is in trouble. I would just like to be able to open the door without bracing.", why: "Says outright that this is not a telling off, then makes the joke at your own expense rather than theirs. People comply with someone being human at them and dig in against someone being correct at them." }
         ]
       }
     ],
@@ -1004,9 +1012,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "Pick the subject line.",
         tiles: [
-          { tier: 0, text: "Hey", why: "A subject line with no information is not neutral, it is ominous. Jules opens this braced for something serious, which is a worse start than simply naming the money." },
-          { tier: 1, text: "Concert ticket money", why: "Clear, and there is nothing wrong with clear. It just reads like an invoice, so they open it already feeling told off." },
-          { tier: 2, text: "The April ticket, and no drama", why: "Names the thing and defuses it in the same breath. They know what this is and that it is survivable before they open it, so they open it." }
+          { tier: 0, principle: "Negativity bias", text: "Hey", why: "A subject line with no information is not neutral, it is ominous. Jules opens this braced for something serious, which is a worse start than simply naming the money would have been." },
+          { tier: 1, principle: "Processing fluency", text: "Concert ticket money", why: "Clear, and there is nothing wrong with clear. It just reads like an invoice, so they open it already feeling told off before you have said a word." },
+          { tier: 2, principle: "Negativity bias", text: "The April ticket, and no drama", why: "Names the thing and defuses it in the same breath. The barrier here was never the 180 dollars, it was the dread of the conversation, and this answers that dread before the email is even opened." }
         ]
       },
       {
@@ -1014,9 +1022,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "Pick the opening.",
         tiles: [
-          { tier: 0, text: "Hey! Hope you are well! Been ages! How are things? Anyway, just wondering about something.", why: "Four units of throat clearing and then a swerve. The cheeriness makes the turn feel like an ambush, and just wondering about something is more unsettling than the actual topic." },
-          { tier: 1, text: "I wanted to check in about the concert ticket from April.", why: "Clear and calm. A little formal for a friend, and check in is a softener doing no work, but the message lands." },
-          { tier: 2, text: "This is the awkward money one, so I am going to be quick about it. The April ticket was 180.", why: "Naming the awkwardness is what removes it. You have said the difficult part out loud so neither of you has to dance around it, and the number is there in sentence one." }
+          { tier: 0, principle: "Processing fluency", text: "Hey! Hope you are well! Been ages! How are things? Anyway, just wondering about something.", why: "Four units of throat clearing and then a swerve. The cheeriness makes the turn feel like an ambush, and just wondering about something is more unsettling than the actual topic would have been." },
+          { tier: 1, principle: "Processing fluency", text: "I wanted to check in about the concert ticket from April.", why: "Clear and calm, and it lands. A little formal for a friend, and check in is a softener doing no real work, but nothing here does any damage." },
+          { tier: 2, principle: "Negativity bias", text: "This is the awkward money one, so I am going to be quick about it. The April ticket was 180.", why: "Naming the awkwardness out loud is what removes it. Neither of you has to dance around it now, and the number is in sentence one so nobody has to ask." }
         ]
       },
       {
@@ -1024,9 +1032,9 @@ const SCENARIOS = [
         job: "Only what they need",
         prompt: "Pick what you say about the four months.",
         tiles: [
-          { tier: 0, text: "I have mentioned it a few times and I do not want to keep bringing it up, but it has been four months and it is starting to feel a bit off.", why: "This is as per my previous email, in a friendship. Feeling a bit off is an accusation wearing the costume of a feeling, and it invites a defence rather than a payment." },
-          { tier: 1, text: "I know things have been busy. No rush, whenever suits.", why: "So soft it cancels the request. Four months in, no rush means never, and you cannot raise it again without contradicting yourself." },
-          { tier: 2, text: "I am fairly sure you just forgot, and I left it far too long to say anything, which is on me.", why: "Hands them a face saving exit and takes some of the blame yourself. They can now pay without admitting anything, and people pay much faster when paying is not also a confession." }
+          { tier: 0, principle: "Negativity bias", text: "I have mentioned it a few times and I do not want to keep bringing it up, but it has been four months and it is starting to feel a bit off.", why: "This is as per my previous email, transplanted into a friendship. Feeling a bit off is an accusation wearing the costume of a feeling, and it invites a defence rather than a payment." },
+          { tier: 1, principle: "Decision friction", text: "I know things have been busy. No rush, whenever suits.", why: "So soft it cancels the request. Four months in, no rush means never, and you cannot raise it again without contradicting yourself." },
+          { tier: 2, principle: "Self-efficacy", text: "I am fairly sure you just forgot, and I left it far too long to say anything, which is on me.", why: "Hands them a face saving exit and takes some of the blame yourself. They can now pay without admitting anything, and people pay much faster when paying is not also a confession." }
         ]
       },
       {
@@ -1034,9 +1042,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "Pick the ask.",
         tiles: [
-          { tier: 0, text: "Anyway, let me know your thoughts on that.", why: "There is no ask here at all. You have described a situation and asked for an opinion about it, so the likeliest reply is a sympathetic noise and no money." },
-          { tier: 1, text: "Could you send it across when you get a chance?", why: "A real ask undone by its own ending. When you get a chance is how the first four months happened, and it will comfortably produce four more." },
-          { tier: 2, text: "Can you send it this week? Same details as always. If this week is bad, say so and we will sort something out.", why: "Dated, specific, and it offers an alternative to silence. The out matters as much as the deadline, because someone who genuinely cannot pay now has something to say other than nothing." }
+          { tier: 0, principle: "Decision friction", text: "Anyway, let me know your thoughts on that.", why: "There is no ask here at all. You have described a situation and requested an opinion about it, so the likeliest reply is a sympathetic noise and no money." },
+          { tier: 1, principle: "Decision friction", text: "Could you send it across when you get a chance?", why: "A real ask undone by its own ending. When you get a chance is how the first four months happened, and it will comfortably produce four more." },
+          { tier: 2, principle: "Decision friction", text: "Can you send it this week? Same details as always. If this week is bad, say so and we will sort something out.", why: "Dated, specific, and it offers an alternative to silence. The out matters as much as the deadline, because someone who genuinely cannot pay now has something to say other than nothing." }
         ]
       },
       {
@@ -1044,9 +1052,9 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Pick the close.",
         tiles: [
-          { tier: 0, text: "Hopefully we can put this behind us.", why: "It was not a Thing until that sentence made it one. You have upgraded a forgotten transfer into a rift that now needs healing." },
-          { tier: 1, text: "Thanks!", why: "Perfectly fine and completely inert. After a difficult email the close is where you prove the friendship is intact, and this does not do that." },
-          { tier: 2, text: "That is the whole email and I am genuinely not weird about it. Still on for Saturday.", why: "Closes the topic, proves the friendship is not in question, and hands them something normal to reply to. Now the easiest response is to pay you and talk about Saturday." }
+          { tier: 0, principle: "Negativity bias", text: "Hopefully we can put this behind us.", why: "It was not a Thing until that sentence made it one. You have upgraded a forgotten transfer into a rift that now apparently needs healing." },
+          { tier: 1, principle: "Negativity bias", text: "Thanks!", why: "Perfectly fine and completely inert. After a difficult email the close is where you prove the relationship survived, and one word cannot do that." },
+          { tier: 2, principle: "Negativity bias", text: "That is the whole email and I am genuinely not weird about it. Still on for Saturday.", why: "Closes the topic, proves the friendship is not in question, and hands them something normal to reply to. The easiest available response is now to pay you and talk about Saturday." }
         ]
       }
     ],
@@ -1065,7 +1073,6 @@ const SCENARIOS = [
       }
     }
   },
-
   {
     id: "replyall",
     name: "The reply-all storm",
@@ -1079,9 +1086,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "Your email is about to become number forty three. Pick the subject line.",
         tiles: [
-          { tier: 0, text: "PLEASE STOP REPLYING ALL", why: "You have joined the storm in capital letters. It reads as somebody losing their temper, and the reply that comes back to all will be about your tone rather than the parking." },
-          { tier: 1, text: "Regarding the earlier email chain", why: "Calm, and completely uninformative. Vague subject lines make people open the email to find out, and opening it is the last thing you want them doing to a thread you are trying to kill." },
-          { tier: 2, text: "No action needed, you can ignore this thread", why: "The only subject line that does the job without being opened. The best possible outcome here is that most people read six words, feel released, and never touch it again." }
+          { tier: 0, principle: "Negativity bias", text: "PLEASE STOP REPLYING ALL", why: "You have joined the storm in capital letters. It reads as somebody losing their temper, and the reply that comes back to all will be about your tone rather than the parking." },
+          { tier: 1, principle: "Processing fluency", text: "Regarding the earlier email chain", why: "Calm and completely uninformative. Vague subject lines make people open the email to find out what it says, and opening it is the last thing you want anyone doing to a thread you are trying to kill." },
+          { tier: 2, principle: "Decision friction", text: "No action needed, you can ignore this thread", why: "The only subject line here that does its job without being opened. The best available outcome is that most people read six words, feel released, and never touch the thread again." }
         ]
       },
       {
@@ -1089,9 +1096,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "Pick the opening.",
         tiles: [
-          { tier: 0, text: "Can everyone PLEASE stop hitting reply all. This is exactly the sort of thing I was talking about.", why: "Now it is about your feelings rather than their inboxes, and the second sentence implies a history nobody else remembers. You have given forty people something to have an opinion about." },
-          { tier: 1, text: "Apologies for adding to your inbox, but I wanted to address the email chain from this morning.", why: "Apologising for the thing you are doing while you do it. It is polite and it burns a line without delivering a single fact." },
-          { tier: 2, text: "The parking notice stands, nothing else is needed from you, and this thread is now closed.", why: "Three facts and a full stop. Anyone who reads only this sentence has everything they need, which is the whole job when your audience is forty irritated people." }
+          { tier: 0, principle: "Negativity bias", text: "Can everyone PLEASE stop hitting reply all. This is exactly the sort of thing I was talking about.", why: "Now it is about your feelings rather than their inboxes, and the second sentence implies a history nobody else remembers. You have handed forty people something to have an opinion about." },
+          { tier: 1, principle: "Processing fluency", text: "Apologies for adding to your inbox, but I wanted to address the email chain from this morning.", why: "Apologising for the thing you are doing while you do it. Polite, and it burns a line without delivering a single fact." },
+          { tier: 2, principle: "Processing fluency", text: "The parking notice stands, nothing else is needed from you, and this thread is now closed.", why: "Three facts and a full stop. Anyone who reads only this sentence has everything they need, which is the whole job when your audience is forty irritated people on their phones." }
         ]
       },
       {
@@ -1099,9 +1106,9 @@ const SCENARIOS = [
         job: "Only what they need",
         prompt: "Pick what you say about the chaos.",
         tiles: [
-          { tier: 0, text: "Reply all should only be used where a response is genuinely relevant to all recipients, in line with our email etiquette guidance.", why: "An email to forty people about not sending emails to forty people. Somebody will reply to all to point that out, and they will be right, and it will be funnier than anything you wrote." },
-          { tier: 1, text: "I appreciate this has caused some confusion this morning.", why: "Acknowledges the mess and does nothing about the cause. It is a sentence that exists to sound reasonable rather than to change anything." },
-          { tier: 2, text: "If you were trying to get taken off a list, there is no list. It was a one off and you will not get another.", why: "Finds the actual engine of the storm and switches it off. Forty people are replying because they think they are subscribed to something. Nothing else you write matters if you leave that belief in place." }
+          { tier: 0, principle: "Self-determination", text: "Reply all should only ever be used where a response is genuinely relevant to every recipient on the distribution, in line with the email etiquette guidance circulated previously and available on the intranet for anyone who would like to refresh their understanding.", why: "An email to forty people about not sending emails to forty people. Somebody will reply to all to point that out, and they will be right, and it will be funnier than anything you wrote." },
+          { tier: 1, principle: "Processing fluency", text: "I appreciate this has caused some confusion this morning.", why: "Acknowledges the mess and does nothing about the cause. It is a sentence that exists to sound reasonable rather than to change anything." },
+          { tier: 2, principle: "Decision friction", text: "If you were trying to get taken off a list, there is no list. It was a one off and you will not get another.", why: "Finds the actual engine of the storm and switches it off. Forty people are replying because they believe they are subscribed to something, and nothing else you write matters while that belief is still in place." }
         ]
       },
       {
@@ -1109,9 +1116,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "Pick the ask.",
         tiles: [
-          { tier: 0, text: "Please refrain from any further replies to this chain.", why: "An instruction that at least four people will acknowledge by replying to all to confirm they will not reply to all. You have written an ask into an email whose entire purpose is to remove the ask." },
-          { tier: 1, text: "Please do not reply to this email.", why: "Shorter and clearer, and still an instruction, which some people cannot leave alone. Telling a crowd not to do something keeps the thing in their hands." },
-          { tier: 2, text: "There is nothing to do and nothing to reply to. If you need me, my address is below and it comes only to me.", why: "Removes the ask entirely instead of asking for restraint, then gives the one person with a genuine question a private door to use. You have made silence the easiest option rather than the requested one." }
+          { tier: 0, principle: "Self-determination", text: "Please refrain from any further replies to this chain.", why: "An instruction that at least four people will acknowledge by replying to all to confirm they will not reply to all. You have written an ask into the one email whose purpose is to remove the ask." },
+          { tier: 1, principle: "Self-determination", text: "Please do not reply to this email.", why: "Shorter and clearer, and still an instruction, which some people simply cannot leave alone. Telling a crowd not to do something keeps the thing in their hands." },
+          { tier: 2, principle: "Decision friction", text: "Nothing to do, nothing to reply to. My address is below if you need me, and it comes only to me.", why: "Removes the ask entirely rather than asking for restraint, then gives the one person with a genuine question a private door to use. Silence is now the easiest option rather than the requested one." }
         ]
       },
       {
@@ -1119,9 +1126,9 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Pick the close.",
         tiles: [
-          { tier: 0, text: "Thank you for your cooperation in this matter.", why: "Stiff enough that somebody replies to all with a sarcastic thanks, and now it has a second act." },
-          { tier: 1, text: "Thanks all.", why: "Warm and open ended, which is the problem. Thanks all is an invitation, and you will get four no worries in return, to everybody." },
-          { tier: 2, text: "Sending this once, and then I am going to go and have a coffee.", why: "Signals finality, makes the joke before anyone else can, and leaves nothing to answer. People stop piling on when the person at the front is clearly relaxed and clearly finished." }
+          { tier: 0, principle: "Negativity bias", text: "Thank you for your cooperation in this matter.", why: "Stiff enough that somebody replies to all with a sarcastic thanks, and now the thread has a second act." },
+          { tier: 1, principle: "Decision friction", text: "Thanks all.", why: "Warm and open ended, which is precisely the problem. Thanks all is an invitation, and you will get four no worries in return, to everybody." },
+          { tier: 2, principle: "Negativity bias", text: "Sending this once, and then I am going to go and have a coffee.", why: "Signals finality, makes the joke before anyone else can, and leaves nothing to answer. People stop piling on when the person at the front is visibly relaxed and visibly finished." }
         ]
       }
     ],
@@ -1154,9 +1161,9 @@ const SCENARIOS = [
         job: "Make the promise",
         prompt: "This is the first proper thing you will ever send her. Pick the subject line.",
         tiles: [
-          { tier: 0, text: "Noise complaint", why: "The word complaint turns a chat between neighbours into a formal matter, filed by someone with no standing to file anything. She will read the rest of the email as a legal document." },
-          { tier: 1, text: "Your rooster", why: "Clear, and aimed squarely at something she is fond of. Two words with no context reads as an accusation, so she opens it braced." },
-          { tier: 2, text: "Hello from number 14, and a small favour to ask", why: "Introduces you as a person before it introduces the problem, and the words small favour set the size of what is coming. She opens this curious rather than defensive." }
+          { tier: 0, principle: "Self-determination", text: "Noise complaint", why: "The word complaint turns a chat between neighbours into a formal matter, filed by someone with no standing to file anything. She will read every sentence after it as a legal document." },
+          { tier: 1, principle: "Negativity bias", text: "Your rooster", why: "Clear, and aimed squarely at something she is fond of. Two words with no context reads as an accusation, so she opens it braced for a fight." },
+          { tier: 2, principle: "Negativity bias", text: "Hello from number 14, and a small favour to ask", why: "Introduces you as a person before it introduces the problem, and small favour sets the size of what is coming. She opens this curious rather than defensive, which is the only useful state to have her in." }
         ]
       },
       {
@@ -1164,9 +1171,9 @@ const SCENARIOS = [
         job: "Get to the point",
         prompt: "Pick the opening.",
         tiles: [
-          { tier: 0, text: "I am writing to inform you that the noise from your property is unreasonable and is affecting my sleep.", why: "The language of an official notice from someone with no power to issue one. Unreasonable is a judgement she has not agreed to, and it puts her in a position where the only move is to defend herself." },
-          { tier: 1, text: "I wanted to reach out about the rooster.", why: "Neutral and clear. It is also slightly ominous with no context attached, so she reads the next sentence expecting the worst." },
-          { tier: 2, text: "We moved into number 14 last month and still have not properly said hello, which I am fixing now. I also have a favour to ask.", why: "Builds the relationship before spending it, and is honest that a request is coming rather than ambushing her with one. The order matters, because you cannot ask a favour of a stranger." }
+          { tier: 0, principle: "Self-determination", text: "I am writing to inform you that the noise from your property is unreasonable and is affecting my sleep.", why: "The language of an official notice from someone with no power to issue one. Unreasonable is a judgement she has not agreed to, and it leaves her no move except to defend herself." },
+          { tier: 1, principle: "Processing fluency", text: "I wanted to reach out about the rooster.", why: "Neutral and clear. It is also slightly ominous with no context attached, so she reads the following sentence expecting the worst." },
+          { tier: 2, principle: "Negativity bias", text: "We moved into number 14 last month and still have not properly said hello, which I am fixing now. I also have a favour to ask.", why: "Builds the relationship before spending it, and is honest that a request is coming rather than ambushing her with one. The order matters, because you cannot ask a favour of a stranger." }
         ]
       },
       {
@@ -1174,9 +1181,9 @@ const SCENARIOS = [
         job: "Only what they need",
         prompt: "Pick how you describe the problem.",
         tiles: [
-          { tier: 0, text: "It starts at 4:40 every single morning without fail, and I have not had a full night of sleep in three weeks.", why: "A catalogue of your suffering, which casts her as the villain of a story she did not know she was in. Every detail you add about how bad it is adds to what she has to feel guilty about, and guilt makes people defensive rather than helpful." },
-          { tier: 1, text: "The rooster does tend to start quite early in the morning.", why: "So soft it is deniable. She can reply, entirely honestly, that roosters do that, and nothing has been asked or changed." },
-          { tier: 2, text: "He gets going around 4:40, and our bedroom window happens to be the closest thing in the street to his coop. Pure bad luck on the layout.", why: "Specific about the facts and generous about the cause. Blaming the geometry rather than the person is what lets her help you without first admitting she did something wrong." }
+          { tier: 0, principle: "Negativity bias", text: "It starts at 4:40 every single morning without fail, and I have not had a full night of sleep since we moved in three weeks ago. I have tried earplugs, a fan and sleeping in the other room, and none of it has made any real difference.", why: "A catalogue of your suffering, which casts her as the villain of a story she did not know she was in. Every detail about how bad it is adds to what she has to feel guilty about, and guilt makes people defensive rather than helpful." },
+          { tier: 1, principle: "Decision friction", text: "The rooster does tend to start quite early in the morning.", why: "So soft it is deniable. She can reply, entirely honestly, that roosters do that, and nothing has been asked and nothing has changed." },
+          { tier: 2, principle: "Self-efficacy", text: "He gets going around 4:40, and our bedroom window happens to be the closest thing in the street to his coop. Pure bad luck on the layout.", why: "Specific about the facts and generous about the cause. Blaming the geometry rather than the person is what lets her help you without first having to admit she did something wrong." }
         ]
       },
       {
@@ -1184,9 +1191,9 @@ const SCENARIOS = [
         job: "One thing, clearly",
         prompt: "Pick the ask.",
         tiles: [
-          { tier: 0, text: "Could you please do something about it?", why: "Hands her a problem with no shape and no suggestion. She now has to invent a solution, guess whether it is enough, and risk getting it wrong, so the easy answer is a vague one." },
-          { tier: 1, text: "Would you be able to keep him quiet in the mornings?", why: "A clear ask for something she probably cannot deliver. Roosters are not negotiable, so the honest answer to this question is no, and you have written an email whose most likely reply is no." },
-          { tier: 2, text: "Is there anything that would help? I have read that covering the coop makes a difference, but you know him and I do not. Happy to go halves on it.", why: "Asks for her expertise instead of her compliance, brings a suggestion without insisting on it, and offers to pay. The solution stays hers, which is the only way this works when you have no leverage at all." }
+          { tier: 0, principle: "Decision friction", text: "Could you please do something about it?", why: "Hands her a problem with no shape and no suggestion. She has to invent a solution, guess whether it is enough, and risk getting it wrong, so the easy answer is a vague one." },
+          { tier: 1, principle: "Self-efficacy", text: "Would you be able to keep him quiet in the mornings?", why: "A clear ask for something she probably cannot deliver. Roosters are not negotiable, so the honest answer is no, and you have written an email whose most likely reply is no." },
+          { tier: 2, principle: "Self-determination", text: "Is there anything that would help? I've read covering the coop works, but you know him and I don't. Happy to go halves.", why: "Asks for her expertise rather than her compliance, brings a suggestion without insisting on it, and offers to pay. The solution stays hers, which is the only thing that works when you have no leverage at all." }
         ]
       },
       {
@@ -1194,9 +1201,9 @@ const SCENARIOS = [
         job: "Leave the door open",
         prompt: "Pick the close.",
         tiles: [
-          { tier: 0, text: "I would rather sort this between us than have to take it further.", why: "A threat, from someone with nowhere to take it. You have now become the neighbour who threatened her in week three, and that is who you will be at the bins for the next four years." },
-          { tier: 1, text: "Thanks for understanding.", why: "Assumes an agreement she has not given. Thanking someone in advance for saying yes is a quiet form of pressure, and people feel it." },
-          { tier: 2, text: "Genuinely not a big deal and I am not annoyed. We are new here and would much rather sort something over the fence than start off on the wrong foot.", why: "States plainly that there is no conflict, which is the thing she will be scanning for, and frames the whole exchange as neighbourliness rather than a dispute. You have given her every reason to help and none to dig in." }
+          { tier: 0, principle: "Self-determination", text: "I would rather sort this out between us amicably than have to take it any further, but I do want to be clear that I have looked into what the council rules say about livestock in residential areas and I am prepared to follow that up if nothing changes.", why: "A threat, from someone with nowhere to take it. You are now the neighbour who threatened her in week three, and that is who you will be at the bins for the next four years." },
+          { tier: 1, principle: "Self-determination", text: "Thanks for understanding.", why: "Assumes an agreement she has not given. Thanking someone in advance for saying yes is a quiet form of pressure, and people feel it even when they cannot name it." },
+          { tier: 2, principle: "Negativity bias", text: "Genuinely not a big deal and I am not annoyed. We are new here and would much rather sort something over the fence than start off on the wrong foot.", why: "States plainly that there is no conflict, which is the thing she will be scanning for, and frames the exchange as neighbourliness rather than a dispute. Every reason to help, and none to dig in." }
         ]
       }
     ],
@@ -1417,7 +1424,7 @@ function renderPlay() {
 
 function choose(idx) {
   const t = state.scenario.steps[state.step].tiles[idx];
-  state.picks[state.step] = { index: idx, tier: t.tier, text: t.text, why: t.why };
+  state.picks[state.step] = { index: idx, tier: t.tier, text: t.text, why: t.why, principle: t.principle };
 
   if (state.step === 4) {
     const id = state.scenario.id;
@@ -1461,6 +1468,7 @@ function renderResult() {
         <div class="rhead">
           <span class="part">${esc(st.part)}</span>
           <span class="badge b${p.tier}">${GRADES[p.tier]} &middot; ${p.tier} ${p.tier === 1 ? "pt" : "pts"}</span>
+          <span class="prin">${esc(p.principle)}</span>
         </div>
         <div class="yours">${esc(p.text)}</div>
         <div class="note">${esc(p.why)}</div>

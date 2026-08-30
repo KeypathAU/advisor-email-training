@@ -270,6 +270,33 @@
   }
   .rule-note p { margin: 0; max-width: none; }
 
+  .warn {
+    margin-top: 22px;
+    padding: 24px 26px 26px;
+    border: 2px solid var(--ink);
+    max-width: 62ch;
+  }
+  .warn .wk {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 11px;
+  }
+  .warn .wlead {
+    font-family: var(--f-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 14px;
+    max-width: none;
+  }
+  .warn p { font-size: 0.96rem; line-height: 1.58; color: var(--ink-2); max-width: none; }
+
   /* ---------- three checks ---------- */
 
   .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 26px; }
@@ -585,7 +612,7 @@
     .shell { max-width: none; padding: 0; }
     .open { padding: 0 0 22px; }
     .sec { padding: 26px 0; }
-    .fact, .check, .wrong, .tone, .part, .mail, .sheet, .why, .spiral { break-inside: avoid; page-break-inside: avoid; }
+    .fact, .check, .wrong, .tone, .part, .mail, .sheet, .why, .spiral, .warn { break-inside: avoid; page-break-inside: avoid; }
     .sec h2, .open h1 { break-after: avoid; page-break-after: avoid; }
     .final { break-before: page; page-break-before: always; }
     .playlink { display: none; }
@@ -757,6 +784,25 @@
             </p>
             <div class="rule-note">
               <p>Try it: delete a sentence. If they'd still do the right thing, leave it deleted.</p>
+            </div>
+            <div class="warn">
+              <span class="wk">Read this bit twice</span>
+              <p class="wlead">Short is not the same as kind.</p>
+              <p>
+                Cutting means removing the words that do no work. It does not mean removing the
+                words that do the human work, and those are always the first to go when someone
+                is trying to be efficient. "I hope this email finds you well" is long and empty.
+                "Your submission is overdue" is short and cold. Both of them fail, for opposite
+                reasons.
+              </p>
+              <p>
+                A student cannot tell the difference between an advisor who is busy and an
+                advisor who is annoyed. If you cut until only the facts are left, what arrives
+                at their end is not efficiency. It is disapproval. Protect the sentence that
+                says this is normal, or that you are on their side, or that they are not in
+                trouble. That sentence is usually the shortest one in the email and it is doing
+                more than the rest of it put together.
+              </p>
             </div>
           </div>
         </div>
