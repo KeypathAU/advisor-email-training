@@ -7,6 +7,8 @@ Two pages for the Keypath advisor team, on writing emails people actually answer
 | Who Wrote It Better | `index.html` | A five round quiz. Judge three versions of every line, build an email, see what happens. |
 | Write So They Write Back | `guide.html` | The written guide the game is built on. |
 
+Both pages share a favicon, `favicon.svg`, embedded directly in each file so they stay self contained.
+
 They link to each other, so the hub only needs one link. Point it at the root.
 
 No build step, no dependencies, no install. Two HTML files.
@@ -21,9 +23,10 @@ Your pick drops into the draft and you move on. Everything is revealed at the en
 every line graded with the reasoning, the strongest option for anything you missed, and what
 happened next.
 
-Two points strong, one okay, none weak. Ten per scenario. Six scenarios: four on student contact
-covering warm, firm but kind, repair and last chance, plus two deliberately silly ones (an all
-staff email about the office fridge, and getting money back off a friend) that drill the same
+Two points strong, one okay, none weak. Ten per scenario. Eight scenarios: four on student contact
+covering warm, firm but kind, repair and last chance, plus four deliberately silly ones (an all
+staff email about the office fridge, getting money back off a friend, ending a reply-all storm,
+and asking a neighbour about her rooster) that drill the same
 five part structure without anyone having to think about their own job.
 
 Click a tile or press A, B or C. The keyboard shortcuts make it quick to run live with a

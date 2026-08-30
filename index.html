@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A training game. Judge three versions of every line, build an email, then see everything revealed at the end.">
 <title>Who Wrote It Better</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3QgeD0iMjUuNSIgeT0iMTkuNSIgd2lkdGg9IjM0IiBoZWlnaHQ9IjI1IiByeD0iMi40IiBmaWxsPSIjRUZBMDMwIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMy42IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTTI3LjYgMjEuNCA0Mi41IDMzLjYgNTcuNCAyMS40IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMy42IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMjcuNiA0Mi42IDM4LjYgMzIuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjMuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTTU3LjQgNDIuNiA0Ni40IDMyLjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIzLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zLjYgMjQuNEgxOS42IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMy42IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNOC4yIDMySDE5LjYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIzLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNC40IDM5LjZIMTkuNiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjMuNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+Cjwvc3ZnPgo=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=DM+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
@@ -287,6 +288,24 @@
     text-underline-offset: 4px;
   }
   .linkish:hover { color: var(--accent); }
+  .backbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--surface);
+    border: 2px solid var(--ink);
+    box-shadow: var(--shadow);
+    padding: 8px 15px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 0.13s ease, box-shadow 0.13s ease, background 0.13s ease;
+  }
+  .backbtn:hover { transform: translate(-2px, -3px); box-shadow: var(--shadow-up); background: var(--accent-wash); }
+  .backbtn:active { transform: none; box-shadow: var(--shadow); }
+  .backbtn .arw { font-size: 13px; line-height: 1; }
   .rounds { display: flex; gap: 5px; }
   .seg {
     width: 34px;
@@ -1045,6 +1064,156 @@ const SCENARIOS = [
         reply: "Wow, OK. You could have just asked me. I would have sorted it straight away if you had said something instead of letting it build up for four months and then sending me this."
       }
     }
+  },
+
+  {
+    id: "replyall",
+    name: "The reply-all storm",
+    tone: "Damage control",
+    blurb: "Forty two people are now discussing a parking notice.",
+    student: "All Staff",
+    brief: "At 9:14 this morning someone sent an all staff email about a parking notice. At 9:16 someone replied to all asking to be removed from the list. Forty two emails later, people are replying to all to ask people to stop replying to all. Two of them are being funny about it. One is not. You have been asked to end this.",
+    steps: [
+      {
+        part: "Subject line",
+        job: "Make the promise",
+        prompt: "Your email is about to become number forty three. Pick the subject line.",
+        tiles: [
+          { tier: 0, text: "PLEASE STOP REPLYING ALL", why: "You have joined the storm in capital letters. It reads as somebody losing their temper, and the reply that comes back to all will be about your tone rather than the parking." },
+          { tier: 1, text: "Regarding the earlier email chain", why: "Calm, and completely uninformative. Vague subject lines make people open the email to find out, and opening it is the last thing you want them doing to a thread you are trying to kill." },
+          { tier: 2, text: "No action needed, you can ignore this thread", why: "The only subject line that does the job without being opened. The best possible outcome here is that most people read six words, feel released, and never touch it again." }
+        ]
+      },
+      {
+        part: "First line",
+        job: "Get to the point",
+        prompt: "Pick the opening.",
+        tiles: [
+          { tier: 0, text: "Can everyone PLEASE stop hitting reply all. This is exactly the sort of thing I was talking about.", why: "Now it is about your feelings rather than their inboxes, and the second sentence implies a history nobody else remembers. You have given forty people something to have an opinion about." },
+          { tier: 1, text: "Apologies for adding to your inbox, but I wanted to address the email chain from this morning.", why: "Apologising for the thing you are doing while you do it. It is polite and it burns a line without delivering a single fact." },
+          { tier: 2, text: "The parking notice stands, nothing else is needed from you, and this thread is now closed.", why: "Three facts and a full stop. Anyone who reads only this sentence has everything they need, which is the whole job when your audience is forty irritated people." }
+        ]
+      },
+      {
+        part: "The middle",
+        job: "Only what they need",
+        prompt: "Pick what you say about the chaos.",
+        tiles: [
+          { tier: 0, text: "Reply all should only be used where a response is genuinely relevant to all recipients, in line with our email etiquette guidance.", why: "An email to forty people about not sending emails to forty people. Somebody will reply to all to point that out, and they will be right, and it will be funnier than anything you wrote." },
+          { tier: 1, text: "I appreciate this has caused some confusion this morning.", why: "Acknowledges the mess and does nothing about the cause. It is a sentence that exists to sound reasonable rather than to change anything." },
+          { tier: 2, text: "If you were trying to get taken off a list, there is no list. It was a one off and you will not get another.", why: "Finds the actual engine of the storm and switches it off. Forty people are replying because they think they are subscribed to something. Nothing else you write matters if you leave that belief in place." }
+        ]
+      },
+      {
+        part: "The ask",
+        job: "One thing, clearly",
+        prompt: "Pick the ask.",
+        tiles: [
+          { tier: 0, text: "Please refrain from any further replies to this chain.", why: "An instruction that at least four people will acknowledge by replying to all to confirm they will not reply to all. You have written an ask into an email whose entire purpose is to remove the ask." },
+          { tier: 1, text: "Please do not reply to this email.", why: "Shorter and clearer, and still an instruction, which some people cannot leave alone. Telling a crowd not to do something keeps the thing in their hands." },
+          { tier: 2, text: "There is nothing to do and nothing to reply to. If you need me, my address is below and it comes only to me.", why: "Removes the ask entirely instead of asking for restraint, then gives the one person with a genuine question a private door to use. You have made silence the easiest option rather than the requested one." }
+        ]
+      },
+      {
+        part: "The close",
+        job: "Leave the door open",
+        prompt: "Pick the close.",
+        tiles: [
+          { tier: 0, text: "Thank you for your cooperation in this matter.", why: "Stiff enough that somebody replies to all with a sarcastic thanks, and now it has a second act." },
+          { tier: 1, text: "Thanks all.", why: "Warm and open ended, which is the problem. Thanks all is an invitation, and you will get four no worries in return, to everybody." },
+          { tier: 2, text: "Sending this once, and then I am going to go and have a coffee.", why: "Signals finality, makes the joke before anyone else can, and leaves nothing to answer. People stop piling on when the person at the front is clearly relaxed and clearly finished." }
+        ]
+      }
+    ],
+    outcomes: {
+      strong: {
+        verdict: "It stops dead.",
+        reply: "The thread ends within the minute. Two people reply to you directly, one to say thank you and one with an actual question about the parking notice, which takes eleven seconds to answer. Someone prints your email out and pins it above the printer."
+      },
+      mixed: {
+        verdict: "It slows down.",
+        reply: "Six more replies to all, most of them apologising for replying to all. It burns itself out by about eleven, which is roughly when it would have stopped anyway."
+      },
+      weak: {
+        verdict: "You are now part of it.",
+        reply: "Nine people reply to all to agree with you. Two reply to all to clarify that they were not the ones doing it. One replies to all to point out the irony. At 2pm the head of department sends four words and that is the email that works."
+      }
+    }
+  },
+
+  {
+    id: "rooster",
+    name: "The 4am rooster",
+    tone: "No leverage",
+    blurb: "You have no authority and you live next door forever.",
+    student: "Bev Nguyen",
+    brief: "Your neighbour Bev keeps chickens, and one of them is a rooster. It starts at about 4:40am and it is extremely committed. You moved in three weeks ago. You have no authority, no leverage, and you will be living next to Bev for years. You would like to sleep.",
+    steps: [
+      {
+        part: "Subject line",
+        job: "Make the promise",
+        prompt: "This is the first proper thing you will ever send her. Pick the subject line.",
+        tiles: [
+          { tier: 0, text: "Noise complaint", why: "The word complaint turns a chat between neighbours into a formal matter, filed by someone with no standing to file anything. She will read the rest of the email as a legal document." },
+          { tier: 1, text: "Your rooster", why: "Clear, and aimed squarely at something she is fond of. Two words with no context reads as an accusation, so she opens it braced." },
+          { tier: 2, text: "Hello from number 14, and a small favour to ask", why: "Introduces you as a person before it introduces the problem, and the words small favour set the size of what is coming. She opens this curious rather than defensive." }
+        ]
+      },
+      {
+        part: "First line",
+        job: "Get to the point",
+        prompt: "Pick the opening.",
+        tiles: [
+          { tier: 0, text: "I am writing to inform you that the noise from your property is unreasonable and is affecting my sleep.", why: "The language of an official notice from someone with no power to issue one. Unreasonable is a judgement she has not agreed to, and it puts her in a position where the only move is to defend herself." },
+          { tier: 1, text: "I wanted to reach out about the rooster.", why: "Neutral and clear. It is also slightly ominous with no context attached, so she reads the next sentence expecting the worst." },
+          { tier: 2, text: "We moved into number 14 last month and still have not properly said hello, which I am fixing now. I also have a favour to ask.", why: "Builds the relationship before spending it, and is honest that a request is coming rather than ambushing her with one. The order matters, because you cannot ask a favour of a stranger." }
+        ]
+      },
+      {
+        part: "The middle",
+        job: "Only what they need",
+        prompt: "Pick how you describe the problem.",
+        tiles: [
+          { tier: 0, text: "It starts at 4:40 every single morning without fail, and I have not had a full night of sleep in three weeks.", why: "A catalogue of your suffering, which casts her as the villain of a story she did not know she was in. Every detail you add about how bad it is adds to what she has to feel guilty about, and guilt makes people defensive rather than helpful." },
+          { tier: 1, text: "The rooster does tend to start quite early in the morning.", why: "So soft it is deniable. She can reply, entirely honestly, that roosters do that, and nothing has been asked or changed." },
+          { tier: 2, text: "He gets going around 4:40, and our bedroom window happens to be the closest thing in the street to his coop. Pure bad luck on the layout.", why: "Specific about the facts and generous about the cause. Blaming the geometry rather than the person is what lets her help you without first admitting she did something wrong." }
+        ]
+      },
+      {
+        part: "The ask",
+        job: "One thing, clearly",
+        prompt: "Pick the ask.",
+        tiles: [
+          { tier: 0, text: "Could you please do something about it?", why: "Hands her a problem with no shape and no suggestion. She now has to invent a solution, guess whether it is enough, and risk getting it wrong, so the easy answer is a vague one." },
+          { tier: 1, text: "Would you be able to keep him quiet in the mornings?", why: "A clear ask for something she probably cannot deliver. Roosters are not negotiable, so the honest answer to this question is no, and you have written an email whose most likely reply is no." },
+          { tier: 2, text: "Is there anything that would help? I have read that covering the coop makes a difference, but you know him and I do not. Happy to go halves on it.", why: "Asks for her expertise instead of her compliance, brings a suggestion without insisting on it, and offers to pay. The solution stays hers, which is the only way this works when you have no leverage at all." }
+        ]
+      },
+      {
+        part: "The close",
+        job: "Leave the door open",
+        prompt: "Pick the close.",
+        tiles: [
+          { tier: 0, text: "I would rather sort this between us than have to take it further.", why: "A threat, from someone with nowhere to take it. You have now become the neighbour who threatened her in week three, and that is who you will be at the bins for the next four years." },
+          { tier: 1, text: "Thanks for understanding.", why: "Assumes an agreement she has not given. Thanking someone in advance for saying yes is a quiet form of pressure, and people feel it." },
+          { tier: 2, text: "Genuinely not a big deal and I am not annoyed. We are new here and would much rather sort something over the fence than start off on the wrong foot.", why: "States plainly that there is no conflict, which is the thing she will be scanning for, and frames the whole exchange as neighbourliness rather than a dispute. You have given her every reason to help and none to dig in." }
+        ]
+      }
+    ],
+    outcomes: {
+      strong: {
+        verdict: "Bev knocks on your door that evening.",
+        reply: "She is mortified, says nobody had ever mentioned it, and thinks the coop cover is a good idea because she had been meaning to sort one anyway. She will not take your money. She brings eggs. The rooster now starts at about 6:15, which you can live with."
+      },
+      mixed: {
+        verdict: "A polite reply, and something changes eventually.",
+        reply: "Thanks for letting me know. I will see what I can do. Roosters are roosters unfortunately, but I will have a think about the coop."
+      },
+      weak: {
+        verdict: "Nothing changes and now it is awkward for years.",
+        reply: "I have kept chickens here for six years and nobody has ever complained. The council rules allow them. I would suggest earplugs. You do not hear from Bev again, and you will be avoiding eye contact at the bins until one of you moves."
+      }
+    }
   }
 ];
 
@@ -1058,7 +1227,7 @@ const state = {
   scenario: null,
   step: 0,
   picks: [],
-  order: [],
+  orders: [],
   justPicked: false,
   best: {}
 };
@@ -1078,6 +1247,19 @@ function shuffled(n) {
 
 function total() {
   return state.picks.reduce((s, p) => s + p.tier, 0);
+}
+
+function orderFor(step) {
+  if (!state.orders[step]) state.orders[step] = shuffled(3);
+  return state.orders[step];
+}
+
+function goBack() {
+  if (state.step === 0) return;
+  state.step -= 1;
+  state.picks.length = state.step;
+  state.justPicked = false;
+  render();
 }
 
 function band(score) {
@@ -1140,7 +1322,7 @@ function startScenario(i) {
   state.step = 0;
   state.picks = [];
   state.justPicked = false;
-  state.order = shuffled(3);
+  state.orders = [];
   state.screen = "play";
   render();
 }
@@ -1189,7 +1371,7 @@ function renderPlay() {
     return `<span class="${cls}"></span>`;
   }).join("");
 
-  const tiles = state.order.map((idx, pos) => {
+  const tiles = orderFor(state.step).map((idx, pos) => {
     const t = st.tiles[idx];
     return `<button class="tile" data-tile="${idx}">
       <span class="key">${KEYS[pos]}</span>
@@ -1200,7 +1382,8 @@ function renderPlay() {
   app.innerHTML = `
     <div class="bar">
       <div class="bar-left">
-        <button class="linkish" id="quit">All situations</button>
+        <button class="backbtn" id="quit"><span class="arw">&#8592;</span> All situations</button>
+        ${state.step > 0 ? `<button class="backbtn" id="back"><span class="arw">&#8592;</span> Back a round</button>` : ""}
         <span class="kicker">${esc(sc.name)}</span>
       </div>
       <div class="rounds">${segs}</div>
@@ -1225,6 +1408,8 @@ function renderPlay() {
     </div>`;
 
   app.querySelector("#quit").addEventListener("click", () => { state.screen = "menu"; render(); });
+  const backBtn = app.querySelector("#back");
+  if (backBtn) backBtn.addEventListener("click", goBack);
   app.querySelectorAll("[data-tile]").forEach(b => {
     b.addEventListener("click", () => choose(Number(b.dataset.tile)));
   });
@@ -1243,7 +1428,7 @@ function choose(idx) {
   } else {
     state.step += 1;
     state.justPicked = true;
-    state.order = shuffled(3);
+      
   }
   render();
 }
@@ -1289,7 +1474,7 @@ function renderResult() {
   app.innerHTML = `
     <div class="bar">
       <div class="bar-left">
-        <button class="linkish" id="quit">All situations</button>
+        <button class="backbtn" id="quit"><span class="arw">&#8592;</span> All situations</button>
         <span class="kicker">${esc(sc.name)} &middot; the reveal</span>
       </div>
     </div>
@@ -1335,6 +1520,8 @@ function renderResult() {
   countUp(app.querySelector("#tally"), score);
   app.querySelector("#again").addEventListener("click", () => startScenario(SCENARIOS.indexOf(sc)));
   app.querySelector("#quit").addEventListener("click", () => { state.screen = "menu"; render(); });
+  const backBtn = app.querySelector("#back");
+  if (backBtn) backBtn.addEventListener("click", goBack);
   app.querySelector("#quit2").addEventListener("click", () => { state.screen = "menu"; render(); });
 }
 
@@ -1345,7 +1532,7 @@ document.addEventListener("keydown", e => {
   if (pos === -1 && "123".includes(k)) pos = Number(k) - 1;
   if (pos === -1) return;
   e.preventDefault();
-  choose(state.order[pos]);
+  choose(orderFor(state.step)[pos]);
 });
 
 function render() {
