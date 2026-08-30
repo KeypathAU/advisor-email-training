@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A guide for advisors on writing emails that online students actually answer.">
+<title>Write So They Write Back</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --paper:      #FBF7F3;
+    --surface:    #FFFFFF;
+    --surface-2:  #F3ECE5;
+    --ink:        #241C19;
+    --ink-2:      #5A4D46;
+    --ink-3:      #8B7C73;
+    --rule:       #E2D6CB;
+    --rule-soft:  #EFE7DE;
+    --accent:     #8C2F39;
+    --accent-2:   #B4525A;
+    --accent-wash:#F4E3E2;
+    --drab:       #A0958D;
+    --drab-wash:  #F0ECE7;
+
+    --f-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --f-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+    --measure: 62ch;
+    --shell: 1060px;
+    --rail: 148px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #15100E;
+      --surface:    #1D1714;
+      --surface-2:  #261E1A;
+      --ink:        #F0E8E1;
+      --ink-2:      #BFB1A7;
+      --ink-3:      #90827A;
+      --rule:       #352A25;
+      --rule-soft:  #241D19;
+      --accent:     #DC7B83;
+      --accent-2:   #C4626B;
+      --accent-wash:#3B2124;
+      --drab:       #7C7069;
+      --drab-wash:  #221C19;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #15100E;
+    --surface:    #1D1714;
+    --surface-2:  #261E1A;
+    --ink:        #F0E8E1;
+    --ink-2:      #BFB1A7;
+    --ink-3:      #90827A;
+    --rule:       #352A25;
+    --rule-soft:  #241D19;
+    --accent:     #DC7B83;
+    --accent-2:   #C4626B;
+    --accent-wash:#3B2124;
+    --drab:       #7C7069;
+    --drab-wash:  #221C19;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 18px;
+    line-height: 1.66;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell { max-width: var(--shell); margin: 0 auto; padding: 0 30px; }
+
+  h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+  p { margin: 0 0 1.05em; max-width: var(--measure); }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 600; }
+
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .label {
+    font-family: var(--f-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* ---------- opening ---------- */
+
+  .open { padding: 92px 0 62px; }
+  .open h1 {
+    font-family: var(--f-display);
+    font-size: clamp(2.5rem, 6.6vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    max-width: 16ch;
+    margin: 20px 0 0;
+  }
+  .open h1 .hl {
+    background: linear-gradient(to bottom, transparent 60%, var(--accent-wash) 60%, var(--accent-wash) 95%, transparent 95%);
+  }
+  .open .lede {
+    margin: 28px 0 0;
+    max-width: 54ch;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .open .who {
+    margin-top: 38px;
+    padding-top: 18px;
+    border-top: 2px solid var(--ink);
+    display: inline-block;
+    font-family: var(--f-display);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--ink-2);
+  }
+
+  /* ---------- section frame ---------- */
+
+  .sec {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, 1fr);
+    gap: 0 48px;
+    padding: 58px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .sec > .rail { padding-top: 8px; }
+  .sec h2 {
+    font-family: var(--f-display);
+    font-size: clamp(1.6rem, 3.2vw, 2.15rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    max-width: 20ch;
+  }
+  .sec .intro { margin-top: 16px; color: var(--ink-2); }
+
+  .body-block { margin-top: 34px; }
+
+  /* ---------- reader facts ---------- */
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 30px 40px; }
+  .fact { padding-top: 13px; border-top: 2px solid var(--accent); }
+  .fact-k {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 9px;
+  }
+  .fact h3 {
+    font-family: var(--f-display);
+    font-size: 1.12rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+  }
+  .fact p { margin: 10px 0 0; font-size: 0.96rem; line-height: 1.55; color: var(--ink-2); max-width: none; }
+
+  /* ---------- the five parts ---------- */
+
+  .part {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 0 22px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .part:first-of-type { border-top: none; padding-top: 6px; }
+  .part-n {
+    font-family: var(--f-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.25;
+    font-variant-numeric: tabular-nums;
+  }
+  .part h3 {
+    font-family: var(--f-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .part .job {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 12px;
+  }
+  .part p { color: var(--ink-2); }
+
+  .swap { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 16px; margin-top: 18px; }
+  .swap-cell { padding: 13px 0 0; border-top: 2px solid var(--drab); }
+  .swap-cell.yes { border-top-color: var(--accent); }
+  .swap-cell .k {
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--drab);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .swap-cell.yes .k { color: var(--accent); }
+  .swap-cell p { margin: 0; font-size: 0.95rem; line-height: 1.5; max-width: none; }
+  .swap-cell:not(.yes) p { color: var(--drab); }
+
+  .rule-note {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: var(--accent-wash);
+    font-size: 0.96rem;
+    line-height: 1.5;
+    max-width: 52ch;
+  }
+  .rule-note p { margin: 0; max-width: none; }
+
+  /* ---------- three checks ---------- */
+
+  .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 26px; }
+  .check { display: flex; flex-direction: column; padding-top: 16px; border-top: 2px solid var(--ink); }
+  .check h3 {
+    font-family: var(--f-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .check p { font-size: 0.95rem; line-height: 1.55; color: var(--ink-2); max-width: none; }
+  .check .say {
+    margin-top: auto;
+    padding-top: 16px;
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--accent);
+  }
+
+  /* ---------- why it works ---------- */
+
+  .why { padding: 26px 0; border-top: 1px solid var(--rule-soft); }
+  .why:first-of-type { border-top: none; padding-top: 0; }
+  .why h3 {
+    font-family: var(--f-display);
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: -0.018em;
+    line-height: 1.25;
+    max-width: 34ch;
+  }
+  .why .tag {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 2px 7px;
+    margin-bottom: 12px;
+  }
+  .why p { margin-top: 10px; color: var(--ink-2); font-size: 0.98rem; }
+
+  /* ---------- email cards ---------- */
+
+  .compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px; }
+  .mail { background: var(--surface); border: 1px solid var(--rule); display: flex; flex-direction: column; }
+  .mail.before { background: var(--drab-wash); }
+  .mail-tag {
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    color: var(--drab);
+    border-bottom: 1px solid var(--rule);
+  }
+  .mail.after .mail-tag { color: var(--accent); }
+  .mail-head {
+    padding: 15px 22px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-family: var(--f-mono);
+    font-size: 12px;
+    line-height: 1.75;
+    color: var(--ink-3);
+  }
+  .mail-head b { color: var(--ink); font-weight: 500; }
+  .mail.before .mail-head b { color: var(--drab); }
+  .mail-body { padding: 22px 22px 26px; font-size: 0.97rem; line-height: 1.6; }
+  .mail-body p { margin-bottom: 0.85em; max-width: none; }
+  .mail.before .mail-body { color: var(--drab); }
+
+  .changed { margin-top: 26px; }
+  .changed h4 {
+    font-family: var(--f-display);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+  }
+  .changed ul { margin: 0; padding: 0; list-style: none; }
+  .changed li {
+    padding: 12px 0 12px 22px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 68ch;
+    position: relative;
+  }
+  .changed li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 21px;
+    width: 10px;
+    height: 2px;
+    background: var(--accent);
+  }
+  .changed li b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- what goes wrong ---------- */
+
+  .wrongs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 40px; }
+  .wrong h3 {
+    font-family: var(--f-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.018em;
+    padding-top: 13px;
+    border-top: 2px solid var(--drab);
+  }
+  .wrong p { margin: 9px 0 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-2); max-width: none; }
+  .wrong .tell {
+    margin-top: 12px;
+    font-family: var(--f-mono);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: var(--accent);
+  }
+
+  /* ---------- tone ---------- */
+
+  .tones { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 28px; }
+  .tone { padding-top: 15px; border-top: 3px solid var(--rule); }
+  .tone:nth-child(1) { border-top-color: var(--accent-wash); }
+  .tone:nth-child(2) { border-top-color: var(--accent-2); }
+  .tone:nth-child(3) { border-top-color: var(--accent); }
+  .tone h3 { font-family: var(--f-display); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; }
+  .tone p { margin: 8px 0 12px; font-size: 0.93rem; line-height: 1.55; color: var(--ink-2); max-width: none; }
+  .tone .quote {
+    font-size: 0.93rem;
+    line-height: 1.55;
+    font-style: italic;
+    color: var(--ink);
+    padding-left: 14px;
+    border-left: 2px solid var(--rule);
+  }
+
+  /* ---------- words to drop ---------- */
+
+  .table-wrap { overflow-x: auto; border-top: 2px solid var(--ink); }
+  table { border-collapse: collapse; width: 100%; min-width: 540px; }
+  th {
+    text-align: left;
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 14px 20px 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  th:last-child { padding-right: 0; }
+  td {
+    padding: 14px 20px 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    vertical-align: top;
+    width: 50%;
+  }
+  td:last-child { padding-right: 0; }
+  tr:last-child td { border-bottom: none; }
+  td.drop { color: var(--drab); text-decoration: line-through; text-decoration-color: var(--rule); }
+  td.say { color: var(--ink); }
+
+  /* ---------- checklist ---------- */
+
+  .final { padding: 62px 0; border-top: 1px solid var(--rule); }
+  .sheet {
+    background: var(--surface);
+    border: 2px solid var(--ink);
+    padding: 42px 40px 44px;
+    max-width: 720px;
+  }
+  .sheet h2 {
+    font-family: var(--f-display);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 10px 0 8px;
+  }
+  .sheet > p { color: var(--ink-2); font-size: 0.97rem; margin-bottom: 26px; }
+  .sheet ol { margin: 0; padding: 0; list-style: none; counter-reset: c; }
+  .sheet li {
+    counter-increment: c;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .sheet li::before {
+    content: counter(c);
+    font-family: var(--f-display);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .sheet li span { font-size: 1.02rem; line-height: 1.45; }
+
+  .playlink {
+    display: block;
+    margin-top: 36px;
+    max-width: 720px;
+    padding: 26px 28px 28px;
+    border: 2px solid var(--accent);
+    background: var(--accent-wash);
+    color: var(--ink);
+    text-decoration: none;
+    transition: background 0.14s ease;
+  }
+  .playlink:hover { background: var(--surface); }
+  .playlink .pk {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 9px;
+  }
+  .playlink .pt {
+    display: block;
+    font-family: var(--f-display);
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 9px;
+  }
+  .playlink .pd { display: block; font-size: 0.95rem; color: var(--ink-2); }
+
+  /* ---------- greg note ---------- */
+
+  .greg {
+    margin-top: 52px;
+    max-width: 720px;
+    padding: 26px 28px 28px;
+    background: var(--surface-2);
+  }
+  .greg h4 {
+    font-family: var(--f-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 14px;
+  }
+  .greg p { font-size: 0.94rem; color: var(--ink-2); }
+  .greg ul { margin: 14px 0 0; padding-left: 17px; }
+  .greg li { font-size: 0.92rem; color: var(--ink-2); margin-bottom: 8px; line-height: 1.5; }
+  .greg li:last-child { margin-bottom: 0; }
+
+  .foot {
+    padding: 40px 0 80px;
+    font-family: var(--f-display);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink-3);
+  }
+
+  @media (max-width: 860px) {
+    .sec { grid-template-columns: 1fr; gap: 14px; }
+    .sec > .rail { padding-top: 0; }
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .shell { padding: 0 22px; }
+    .open { padding: 58px 0 44px; }
+    .sec { padding: 44px 0; }
+    .sheet { padding: 30px 24px 32px; }
+    .part { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+<style>
+  @media print {
+    :root,
+    :root:not([data-theme="light"]),
+    :root[data-theme="dark"] {
+      --paper: #FFFFFF;
+      --surface: #FFFFFF;
+      --surface-2: #F3ECE5;
+      --ink: #1A1512;
+      --ink-2: #4A403A;
+      --ink-3: #7A6C64;
+      --rule: #CFC3B8;
+      --rule-soft: #E5DCD3;
+      --accent: #7A2831;
+      --accent-2: #9E464E;
+      --accent-wash: #F4E3E2;
+      --drab: #8E837B;
+      --drab-wash: #F2EEE9;
+    }
+    body { background: #FFFFFF; font-size: 10.5pt; line-height: 1.5; }
+    .shell { max-width: none; padding: 0; }
+    .open { padding: 0 0 22px; }
+    .sec { padding: 26px 0; }
+    .fact, .check, .wrong, .tone, .part, .mail, .sheet, .why, .greg { break-inside: avoid; page-break-inside: avoid; }
+    .sec h2, .open h1 { break-after: avoid; page-break-after: avoid; }
+    .final { break-before: page; page-break-before: always; }
+    .foot { padding: 24px 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="open">
+  <div class="shell">
+    <div class="label">Advisor email</div>
+    <h1>Nobody reads your email. They <span class="hl">scan it and decide</span>.</h1>
+    <p class="lede">
+      Your students are tired, busy, and reading on a phone. Here's how to write something
+      they'll actually answer: what goes in an email, what to check before you send, and why
+      any of it works.
+    </p>
+    <div class="who">For anyone at Keypath writing to online students</div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <section class="sec">
+    <div class="rail"><span class="label">The reader</span></div>
+    <div>
+      <h2>Who you're actually writing to</h2>
+      <p class="intro">
+        Everything here comes from four things that are true about the person on the other end.
+        Get these and most of the writing sorts itself out.
+      </p>
+
+      <div class="body-block facts">
+        <div class="fact">
+          <div class="fact-k">Where they are</div>
+          <h3>They're on a phone, standing up</h3>
+          <p>
+            Between a shift and dinner, on a screen the width of your hand. Anything longer than
+            a screen and a half gets pushed to later, and later usually means never.
+          </p>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What they're juggling</div>
+          <h3>Study is the fourth thing in their day</h3>
+          <p>
+            You're not competing with their other subjects. You're competing with work, kids and
+            being worn out. Assume there's nothing spare and write for that.
+          </p>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Why they go quiet</div>
+          <h3>Going quiet is shame, not rudeness</h3>
+          <p>
+            Students who are behind avoid the people chasing them. The less they've done, the
+            harder your email is to open. So write the one that's easy to answer badly.
+          </p>
+        </div>
+        <div class="fact">
+          <div class="fact-k">What they can't hear</div>
+          <h3>They can't hear your tone</h3>
+          <p>
+            They can't tell that you're being friendly. Neutral wording reads as cool, and cool
+            reads as disappointed. You have to put the warmth in on purpose.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="rail"><span class="label">Structure</span></div>
+    <div>
+      <h2>What goes in an email, in this order</h2>
+      <p class="intro">
+        The order matters because people read top to bottom and stop the moment it stops being
+        worth the effort. Each part has one job. If a part isn't doing its job, cut it.
+      </p>
+
+      <div class="body-block">
+
+        <div class="part">
+          <div class="part-n">1</div>
+          <div>
+            <h3>Subject line</h3>
+            <div class="job">Job: make the promise</div>
+            <p>
+              It answers two questions before they've opened anything. What's this about, and can
+              it wait? Name the actual thing, plus the action or the date. Six to nine words.
+              If your subject line could sit on top of any email you've ever sent, it isn't a
+              subject line.
+            </p>
+            <div class="swap">
+              <div class="swap-cell">
+                <span class="k">Not this</span>
+                <p>Following up / Checking in / Quick question / Important information</p>
+              </div>
+              <div class="swap-cell yes">
+                <span class="k">This</span>
+                <p>Your Week 4 assessment is due this Friday</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="part">
+          <div class="part-n">2</div>
+          <div>
+            <h3>First line</h3>
+            <div class="job">Job: get to the point</div>
+            <p>
+              Your first sentence carries the reason you wrote. Not the greeting, not the history,
+              not the context. If they read one line and close the email, that line has to be
+              enough for them to know what's going on.
+            </p>
+            <div class="swap">
+              <div class="swap-cell">
+                <span class="k">Not this</span>
+                <p>I hope this email finds you well. I'm writing to follow up on my previous
+                correspondence regarding your progress in the course.</p>
+              </div>
+              <div class="swap-cell yes">
+                <span class="k">This</span>
+                <p>Your Week 4 assessment hasn't come through yet, and I'd like to help you get
+                it in.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="part">
+          <div class="part-n">3</div>
+          <div>
+            <h3>The middle</h3>
+            <div class="job">Job: only what they need</div>
+            <p>
+              Give them what they need to do the right thing, and nothing else. Every extra
+              sentence is a tax on your ask. Background you're adding so they've "got the full
+              picture" is background you're adding for yourself.
+            </p>
+            <div class="rule-note">
+              <p>Try it: delete a sentence. If they'd still do the right thing, leave it deleted.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="part">
+          <div class="part-n">4</div>
+          <div>
+            <h3>The ask</h3>
+            <div class="job">Job: one thing, clearly</div>
+            <p>
+              One email, one ask. Two asks gets you the easy one. Three gets you nothing. Make it
+              specific, put a date on it, and make it small enough that someone who's done nothing
+              can still answer today.
+            </p>
+            <div class="swap">
+              <div class="swap-cell">
+                <span class="k">Not this</span>
+                <p>Please let me know your thoughts and if there's anything else you need, and
+                also make sure your contact details are up to date.</p>
+              </div>
+              <div class="swap-cell yes">
+                <span class="k">This</span>
+                <p>Can you reply by Thursday with one line telling me where you're up to? Even
+                "haven't started" is useful.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="part">
+          <div class="part-n">5</div>
+          <div>
+            <h3>The close</h3>
+            <div class="job">Job: leave the door open</div>
+            <p>
+              Two lines. One that treats them like a person instead of a record, and one that
+              makes replying feel safe. Spend your warmth here, because it's the last thing they
+              read and it's what they carry into whether they answer.
+            </p>
+            <div class="swap">
+              <div class="swap-cell yes">
+                <span class="k">This</span>
+                <p>You're not behind in a way we can't fix. Reply whenever suits and I'll take it
+                from there.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="rail"><span class="label">Checks</span></div>
+    <div>
+      <h2>Three things to check before you send</h2>
+      <p class="intro">
+        About twenty seconds all up. Do them in this order and you'll catch nearly everything.
+      </p>
+
+      <div class="body-block checks">
+        <div class="check">
+          <h3>The squint</h3>
+          <p>
+            Look at it the way they will. On a phone, without reading a word. Can you see where
+            the ask is? If it isn't obvious at a glance, sitting on its own line, anyone skimming
+            will miss it. Everyone is skimming.
+          </p>
+          <div class="say">Squint at it.<br>Where does your eye land?</div>
+        </div>
+        <div class="check">
+          <h3>The flat voice</h3>
+          <p>
+            Read it out loud in the flattest, most impatient voice you can manage. Email always
+            lands colder than you meant it, so the flat reading is closer to what they'll get
+            than yours is. If it survives that, it's safe to send.
+          </p>
+          <div class="say">Read it like you're fed up.<br>Does it still hold?</div>
+        </div>
+        <div class="check">
+          <h3>The count</h3>
+          <p>
+            Count what you're asking them to do. Decisions to make, links to open, documents to
+            dig up, things to remember. Then take one away. "Let me know what suits" is three
+            decisions. "Tuesday 10am or Thursday 2pm?" is one.
+          </p>
+          <div class="say">Count the decisions.<br>Remove one.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="rail"><span class="label">Why it works</span></div>
+    <div>
+      <h2>Why any of this makes a difference</h2>
+      <p class="intro">
+        None of the above is style preference. Here's what's actually happening in the head of
+        the person reading, which is also what lets you handle situations nobody's written a
+        template for.
+      </p>
+
+      <div class="body-block">
+        <div class="why">
+          <span class="tag">Processing fluency</span>
+          <h3>They judge the effort before they read a word</h3>
+          <p>
+            People decide whether to deal with an email based on how it looks, not what it says.
+            That's why 200 words in one block gets pushed to later and the same 200 words in five
+            short paragraphs gets answered. White space isn't decoration. It's a signal that says
+            "this'll be quick". Formatting is doing persuasion work.
+          </p>
+        </div>
+        <div class="why">
+          <span class="tag">Negativity bias</span>
+          <h3>Warm gets read first, and email strips the warm out</h3>
+          <p>
+            People work out whether you're friendly before they work out whether you're any good,
+            and they do it in the first line or two. Written text carries none of the signals
+            that normally do that job, so a neutral email isn't received as neutral, it's
+            received as cool. Unless you add warmth deliberately, the default reading is that
+            you're unimpressed.
+          </p>
+        </div>
+        <div class="why">
+          <span class="tag">Decision friction</span>
+          <h3>Every extra option costs you a reply</h3>
+          <p>
+            Two named times beat "whenever suits you", because "whenever" makes them open a
+            calendar, weigh it up and commit, and each of those is somewhere to give up. Same
+            with a second ask. It doesn't add half as much work again, it adds a decision about
+            which one to do first, and that's where people stall.
+          </p>
+        </div>
+        <div class="why">
+          <span class="tag">Self-determination</span>
+          <h3>Push and they go quiet. Hand them the wheel and they move.</h3>
+          <p>
+            Adults switch off when they feel controlled and re-engage when they feel in charge.
+            "You need to submit by Friday" invites silence. "The deadline's Friday, and if that's
+            not going to work, tell me and we'll look at options" names the same deadline but
+            leaves them in control of the response. You're not softening the message. The
+            deadline is still there.
+          </p>
+        </div>
+        <div class="why">
+          <span class="tag">Self-efficacy</span>
+          <h3>People move when the next step looks small</h3>
+          <p>
+            A student who's behind isn't weighing up your deadline. They're weighing up whether
+            they can face the whole subject, and your email is the thing making them think about
+            it. Shrink the step until it's smaller than the dread. "Send me your first paragraph"
+            gets a reply that "submit your assessment" never will, and once they've answered
+            once, the next one is far easier.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="rail"><span class="label">Example</span></div>
+    <div>
+      <h2>The same email, twice</h2>
+      <p class="intro">
+        Both are accurate. Both are professional. Only one of them gets a reply.
+      </p>
+
+      <div class="body-block compare">
+        <article class="mail before">
+          <div class="mail-tag">Before</div>
+          <div class="mail-head">
+            <div>To: <b>s.mitchell@student.edu.au</b></div>
+            <div>Subject: <b>Following up</b></div>
+          </div>
+          <div class="mail-body">
+            <p>Hi Sarah,</p>
+            <p>I hope this email finds you well. I am writing to follow up on my previous email
+            of 12 August regarding your progress in the course. As per our records, you have not
+            yet submitted the Week 4 assessment which was due on 8 August, and you have also not
+            completed the Week 3 discussion post. Unfortunately, failure to submit assessments
+            can impact your progression and may affect your eligibility to continue. Please
+            advise as to your intentions at your earliest convenience. Additionally, please
+            ensure your contact details are up to date in the student portal.</p>
+            <p>Kind regards,</p>
+          </div>
+        </article>
+
+        <article class="mail after">
+          <div class="mail-tag">After</div>
+          <div class="mail-head">
+            <div>To: <b>s.mitchell@student.edu.au</b></div>
+            <div>Subject: <b>Getting your Week 4 assessment sorted</b></div>
+          </div>
+          <div class="mail-body">
+            <p>Hi Sarah,</p>
+            <p>Your Week 4 assessment hasn't come through yet, and I'd like to help you get it in.</p>
+            <p>Week 4 is where a lot of people hit a wall, so you're in good company, and it's
+            fixable.</p>
+            <p>Can you reply with one line telling me where you're up to? Even "haven't started"
+            is useful. I'll take it from there and we'll work out something that fits around
+            your job.</p>
+            <p>No need to write anything long.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="changed">
+        <h4>Six things changed</h4>
+        <ul>
+          <li><b>The subject line names an outcome, not a chase.</b> "Getting it sorted" sounds
+          like help. "Following up" sounds like trouble, which is exactly what someone avoiding
+          you won't open.</li>
+          <li><b>The reason is in sentence one.</b> If she reads nothing else, she knows what
+          this is about.</li>
+          <li><b>The second ask is gone.</b> Contact details go in their own email, another day.
+          Bundling them halved the odds of getting either.</li>
+          <li><b>The consequences are held back.</b> Progression and eligibility are real, but
+          leading with them triggers avoidance in exactly the student who most needs to reply.
+          Save it for the firm version, after a warm one has gone unanswered.</li>
+          <li><b>The ask shrank to something she can do badly.</b> "Haven't started" is an
+          acceptable answer, and that's the whole trick. It removes the reason to stay silent.</li>
+          <li><b>"Week 4 is where a lot of people hit a wall."</b> One sentence that says this is
+          normal, and it does more for the reply rate than any amount of politeness.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="rail"><span class="label">What goes wrong</span></div>
+    <div>
+      <h2>Six emails that don't land</h2>
+      <p class="intro">
+        Once these have names, you'll start spotting them in your own drafts before you send.
+      </p>
+
+      <div class="body-block wrongs">
+        <div class="wrong">
+          <h3>The Wall</h3>
+          <p>All true, none of it readable. One block of text, no breaks, no visible ask. It gets
+          put off before it gets read.</p>
+          <div class="tell">You can tell it's bad from across the room.</div>
+        </div>
+        <div class="wrong">
+          <h3>The Buried Ask</h3>
+          <p>The thing you need is halfway through paragraph three. They read the first line and
+          the last line and miss it completely.</p>
+          <div class="tell">Your last line is "kind regards", not the ask.</div>
+        </div>
+        <div class="wrong">
+          <h3>The Bundle</h3>
+          <p>Three requests in one email to save yourself a send. You get the easiest one, or
+          none, then chase the other two anyway.</p>
+          <div class="tell">The word "also" turns up.</div>
+        </div>
+        <div class="wrong">
+          <h3>The Over-Apology</h3>
+          <p>So much softening the message disappears. It reads as unsure, so they're unsure it
+          needs doing at all.</p>
+          <div class="tell">"Sorry to bother you, just wondering if maybe."</div>
+        </div>
+        <div class="wrong">
+          <h3>The Robot</h3>
+          <p>Correct, complete, and nobody home. It reads automated, so it gets treated as
+          automated, which means ignored.</p>
+          <div class="tell">Nothing in it could only have been written to this student.</div>
+        </div>
+        <div class="wrong">
+          <h3>The Leak</h3>
+          <p>Your frustration coming through as formality. They hear the irritation and stop
+          taking in anything else.</p>
+          <div class="tell">"As previously advised." "As I've already explained."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="rail"><span class="label">Tone</span></div>
+    <div>
+      <h2>How warm, how firm, and when to shift</h2>
+      <p class="intro">
+        Most of your inbox sits in the first two. Firm is somewhere you move on purpose, after
+        a warmer go has already been ignored, and never because you're annoyed. If you're
+        annoyed, write it and send it tomorrow.
+      </p>
+
+      <div class="body-block tones">
+        <div class="tone">
+          <h3>Warm</h3>
+          <p>First time you raise a problem, anyone who's gone quiet, anyone you think is
+          struggling. Assumes good faith out loud.</p>
+          <div class="quote">"Week 4 catches a lot of people. Tell me where you're up to and
+          we'll sort it out."</div>
+        </div>
+        <div class="tone">
+          <h3>Direct</h3>
+          <p>Routine business. Deadlines, confirmations, anything factual. Friendly but quick.
+          This is your default for most of the day.</p>
+          <div class="quote">"Your enrolment's confirmed for Term 3. Classes open on 14 October
+          and you'll get access on the day."</div>
+        </div>
+        <div class="tone">
+          <h3>Firm</h3>
+          <p>A real consequence is close and the warm approach has already been tried. Say the
+          consequence plainly, once, and still leave a way out.</p>
+          <div class="quote">"If we don't hear from you by Friday your enrolment will be
+          withdrawn. I'd rather that didn't happen, so reply even if it's just to say you need
+          more time."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="rail"><span class="label">Words</span></div>
+    <div>
+      <h2>Words to drop</h2>
+      <p class="intro">
+        Not because they're wrong, but because they're doing the opposite of what you think.
+        Most of them are habits picked up from corporate email, and they put distance between
+        you and the student.
+      </p>
+
+      <div class="body-block table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Drop this</th>
+              <th scope="col">Say this</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="drop">Just checking in</td>
+              <td class="say">Your assessment's due Friday and I haven't seen a draft yet</td>
+            </tr>
+            <tr>
+              <td class="drop">As per my previous email</td>
+              <td class="say">In case my last one got buried, here's the short version</td>
+            </tr>
+            <tr>
+              <td class="drop">Please advise</td>
+              <td class="say">Can you tell me which of these two works?</td>
+            </tr>
+            <tr>
+              <td class="drop">Unfortunately we are unable to</td>
+              <td class="say">Here's what we can do instead</td>
+            </tr>
+            <tr>
+              <td class="drop">I hope this email finds you well</td>
+              <td class="say">Cut it, or make it real: "Hope the last few weeks have eased up"</td>
+            </tr>
+            <tr>
+              <td class="drop">You failed to submit</td>
+              <td class="say">Your submission hasn't come through</td>
+            </tr>
+            <tr>
+              <td class="drop">Kindly note that</td>
+              <td class="say">Just say the thing</td>
+            </tr>
+            <tr>
+              <td class="drop">At your earliest convenience</td>
+              <td class="say">By Thursday, if you can</td>
+            </tr>
+            <tr>
+              <td class="drop">Don't hesitate to reach out</td>
+              <td class="say">Reply to this and it comes straight to me</td>
+            </tr>
+            <tr>
+              <td class="drop">It has come to our attention</td>
+              <td class="say">I noticed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="sheet">
+      <div class="label">Stick this above your desk</div>
+      <h2>Before you hit send</h2>
+      <p>Seven questions. If any answer is no, it isn't finished.</p>
+      <ol>
+        <li><span>Does the subject line say what this is and whether it can wait?</span></li>
+        <li><span>Is the reason I wrote in the first sentence?</span></li>
+        <li><span>Is there exactly one ask?</span></li>
+        <li><span>Is the ask on its own line, with a date on it?</span></li>
+        <li><span>Can I delete a sentence without changing what they'd do?</span></li>
+        <li><span>Would this feel warm to someone having a rough week?</span></li>
+        <li><span>Is the next step small enough that someone who's done nothing can still reply today?</span></li>
+      </ol>
+    </div>
+
+    <a class="playlink" href="index.html">
+      <span class="pk">Now try it</span>
+      <span class="pt">Build the Email</span>
+      <span class="pd">A five round quiz built on everything above. Real situations, no hints while you play, and you find out what the student does next.</span>
+    </a>
+  </section>
+
+  <div class="foot">
+    Written for anyone at Keypath writing to online students
+  </div>
+
+</div>
+
+</body>
+</html>
