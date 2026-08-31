@@ -6,12 +6,13 @@ Two pages for the Keypath advisor team, on writing emails people actually answer
 | --- | --- | --- |
 | Who Wrote It Better | `index.html` | A five round quiz. Judge three versions of every line, build an email, see what happens. |
 | Write So They Write Back | `guide.html` | The written guide the game is built on. |
+| The Email Deck | `deck.html` | A 28 slide version of the guide, for running live in a huddle. |
 
 Both pages share a favicon, `favicon.svg`, embedded directly in each file so they stay self contained.
 
-They link to each other, so the hub only needs one link. Point it at the root.
+All three link to each other, so the hub only needs one link. Point it at the root.
 
-No build step, no dependencies, no install. Two HTML files.
+No build step, no dependencies, no install. Three HTML files.
 
 ## The game
 
@@ -110,3 +111,15 @@ other. The working copy lives at `C:\Users\greg.banks\github\advisor-email-train
   per advisor needs a backend, which this does not have.
 - Fonts load from Google Fonts. Behind a firewall that blocks them, both pages still work and
   fall back to system fonts.
+
+## The deck
+
+`deck.html` is the same material as the guide, condensed for presenting. 28 slides.
+
+- Arrow keys, space, or the on-screen buttons to move.
+- `C` opens the contents grid so you can jump to any slide. `Esc` closes it.
+- Swipe left and right on a phone or tablet.
+- Every slide is deep linkable. `deck.html#14` opens straight on the three checks.
+- `Home` and `End` jump to the first and last slide.
+
+Use the deck to run a huddle and the guide as the thing people go back to afterwards.
